@@ -4,7 +4,7 @@ import java.util.LinkedList;
 
 public class Edge<E> {
 	
-	//vitun pelle
+	
 	Vertex<E> startPoint;
 	Vertex<E> endPoint;
 	float weight;

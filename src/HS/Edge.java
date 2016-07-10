@@ -3,7 +3,8 @@ package HS;
 import java.util.LinkedList;
 
 public class Edge<E> {
-
+	
+	//dsfasdfagasgasge
 	Vertex<E> startPoint;
 	Vertex<E> endPoint;
 	float weight;

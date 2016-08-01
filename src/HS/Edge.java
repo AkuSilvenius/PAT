@@ -2,9 +2,8 @@ package HS;
 
 import java.util.LinkedList;
 
-public class Edge<E> {
+public class Edge<E> implements EdgeIn<E> {
 	
-	//vitun pelle
 	Vertex<E> startPoint;
 	Vertex<E> endPoint;
 	float weight;
@@ -45,24 +44,29 @@ public class Edge<E> {
 		this.color = clr;
 	}
 
+	@Override
 	public void setWeight(int w) {
 		this.weight = w;
 	}
 
+	@Override
 	public float getWeight() {
 		return this.weight;
 	}
 
+	@Override
 	public Vertex<E> getEndPoint() {
 		return this.endPoint;
 	}
 
+	@Override
 	public Vertex<E> getEndPoint(Vertex<E> v) {
 		if (!v.equals(this.startPoint)) return null;
 		if (v.equals(this.startPoint)) return this.endPoint;
 		return this.startPoint;
 	}
 
+	@Override
 	public Vertex<E> getStartPoint() {
 		return this.startPoint;
 	}

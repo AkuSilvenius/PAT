@@ -1,9 +1,8 @@
 package HS;
 
-import java.util.Iterator;
-import java.util.LinkedList;
+import java.util.*;
 
-public class Vertex<E> implements Iterable<E> {
+public class Vertex<E> {
 
 	LinkedList<Edge<E>> edges = new LinkedList<Edge<E>>();
 	String label;
@@ -94,13 +93,8 @@ public class Vertex<E> implements Iterable<E> {
 		return tmp;
 	}
 	
-	@Override
-	public Iterator<E> iterator() {
-		
-		return null;
-	}
-
 	public Iterable<E> neighbors() {
+		return null;
 		
 	}
 

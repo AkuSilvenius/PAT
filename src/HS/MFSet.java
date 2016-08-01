@@ -1,29 +1,32 @@
 package HS;
 
-import java.util.Set;
+import java.util.*;
 
-public class MFSet<E> {
-	
+public class MFSet<E extends Collection<? super E>> implements HSTreeIn<E> {
+
 	int size;
-	
-	public MFSet(HSgraph g) {
-		for (Vertex<E> v : g.vertices()) {
-			
-		}
+	Vertex<E> root;
+
+	public MFSet(HSgraph<Vertex<E>> g) {
+		this.size = g.size();
 	}
-	
-	public static <E> boolean add(Vertex<E> v) {
-		
+
+	public boolean add(Vertex<E> v) {
+		HSTree<E> t = new HSTree<E>(v);
 		return true;
 	}
-	
-	public static <E> Set<Vertex<E>> find(Vertex<E> v) {
+
+	public Node<E> find(Node<E> n) {
 		
-		return null;
-	}
-	
+		if (n != n.parent) {
+			n.parent = find(n.parent);
+		}
+		return n.parent;
+		
+	}	
+
 	public static <E> void merge(Set<Vertex<E>> A, Set<Vertex<E>> B) {
-		
+
 	}
 	
 }

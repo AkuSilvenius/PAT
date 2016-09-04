@@ -2,16 +2,16 @@ package HS;
 
 import java.util.*;
 
-public class Vertex<E> implements Comparable<E>, Iterable<E> {
+public class Vertex extends Object implements Comparable<Object>, Iterable<Object> {
 
-	LinkedList<Edge<E>> edges;
+	LinkedList<Edge> edges;
 	String label;
 	int color;
 	int index;
 	float weight;
 
 	public Vertex() {
-		this.edges = new LinkedList<Edge<E>>();
+		this.edges = new LinkedList<Edge>();
 		this.label = "";
 		this.color = HSCol.NaN;
 		this.index = -1;
@@ -19,7 +19,7 @@ public class Vertex<E> implements Comparable<E>, Iterable<E> {
 	}
 
 	public Vertex(int clr, int ind) {
-		this.edges = new LinkedList<Edge<E>>();
+		this.edges = new LinkedList<Edge>();
 		this.label = "";
 		this.color = clr;
 		this.index = ind;
@@ -27,14 +27,14 @@ public class Vertex<E> implements Comparable<E>, Iterable<E> {
 	}
 	
 	public Vertex(String label, int clr, int ind) {
-		this.edges = new LinkedList<Edge<E>>();
+		this.edges = new LinkedList<Edge>();
 		this.label = label;
 		this.color = clr;
 		this.index = ind;
 		this.weight = Float.NaN;
 	}
 	public Vertex(int clr, int ind, float w) {
-		this.edges = new LinkedList<Edge<E>>();
+		this.edges = new LinkedList<Edge>();
 		this.label = "";
 		this.color = clr;
 		this.index = ind;
@@ -42,7 +42,7 @@ public class Vertex<E> implements Comparable<E>, Iterable<E> {
 	}
 	
 	public Vertex(String label, int clr, int ind, float w) {
-		this.edges = new LinkedList<Edge<E>>();
+		this.edges = new LinkedList<Edge>();
 		this.label = label;
 		this.color = clr;
 		this.index = ind;
@@ -53,8 +53,8 @@ public class Vertex<E> implements Comparable<E>, Iterable<E> {
 		return this.color;
 	}
 
-	public Edge<E> getEdge(Vertex<E> v) {
-		for (Edge<E> e : this.edges)
+	public Edge getEdge(Vertex v) {
+		for (Edge e : this.edges)
 			if (e.getEndPoint().equals(v)) return e;
 		return null;
 	}
@@ -87,53 +87,53 @@ public class Vertex<E> implements Comparable<E>, Iterable<E> {
 		this.weight = w;
 	}
 
-	public Edge<E> addEdge(Vertex<E> v) {
-		Edge<E> tmp = new Edge<E>(v);
+	public Edge addEdge(Vertex v) {
+		Edge tmp = new Edge(v);
 		edges.add(tmp);
 		return tmp;
 	}
 
-	public Edge<E> addEdge(Vertex<E> v, float w) {
-		Edge<E> tmp = new Edge<E>(v, w);
+	public Edge addEdge(Vertex v, float w) {
+		Edge tmp = new Edge(v, w);
 		edges.add(tmp);
 		return tmp;
 	}
 
-	public Edge<E> addEdge(Vertex<E> v, int clr) {
-		Edge<E> tmp = new Edge<E>(v, clr);
+	public Edge addEdge(Vertex v, int clr) {
+		Edge tmp = new Edge(v, clr);
 		edges.add(tmp);
 		return tmp;
 	}
 
-	public Edge<E> addEdge(Vertex<E> v, float w, int clr) {
-		Edge<E> tmp = new Edge<E>(v, w, clr);
+	public Edge addEdge(Vertex v, float w, int clr) {
+		Edge tmp = new Edge(v, w, clr);
 		edges.add(tmp);
 		return tmp;
 	}
 
-	public void removeEdge(Edge<E> e) {
-		for (Edge<E> edge : this.edges)
-			if (edge.equals(e)) edges.re
+	public void removeEdge(Edge e) {
+		for (Edge edge : this.edges)
+			if (edge.equals(e)) edges.r
 	}
 	
-	public Iterable<E> neighbors() {
+	public Iterable<Vertex> neighbors() {
 		return null;
 
 	}
 
-	public static boolean isAdjacent() {
+	public boolean isAdjacent(Vertex v) {
 
 
 		return false;
 	}
 
 	@Override
-	public Iterator<E> iterator() {
+	public Iterator<Object> iterator() {
 		return this.iterator();
 	}
 
 	@Override
-	public int compareTo(E o) {
+	public int compareTo(Object o) {
 		return this.compareTo(o);
 	}
 	

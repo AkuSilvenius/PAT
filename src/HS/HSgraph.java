@@ -2,9 +2,10 @@ package HS;
 
 import java.util.*;
 
-public abstract class HSgraph<E> implements Iterable<E> {
+public abstract class HSgraph extends Object implements Iterable<Object> {
 
-	LinkedList<Vertex<E>> vlist;
+	LinkedList<Vertex> vlist;
+	LinkedList<Edge> elist;
 	int size;
 
 	public HSgraph(int vertices, int edges) {
@@ -15,33 +16,43 @@ public abstract class HSgraph<E> implements Iterable<E> {
 		return this.size;
 	}
 	
-	public Iterator<Vertex<E>> vertexIterator() {
-		return this.vlist.iterator();
+	public Iterable<Vertex> vertices() {
+		return this.vlist;
 	}
 
-	public Iterable<Edge<E>> edges() {
-		return vlist.iterator();
+	public Iterator<Vertex> vertexIterator() {
+		return this.vlist.iterator();
 	}
 	
-	public Vertex<E> addVertex(int clr, int ind, float w) {
-		Vertex<E> tmp = new Vertex<E>(clr, ind, w);
+	public Iterator<Edge> edgeIterator() {
+		return this.elist.iterator();
+	}
+	
+	public Iterable<Edge> edges() {
+		for (Vertex v : vlist) {
+			return v.edges;
+		}
+	}
+	
+	public Vertex addVertex(int clr, int ind, float w) {
+		Vertex tmp = new Vertex(clr, ind, w);
 		vlist.add(tmp);
 		return tmp;
 	}
 
-	LinkedList<Edge<E>> MSTKruskal(HSgraph<E> g) {
-		LinkedList<Edge<E>> mst = new LinkedList<Edge<E>>();
-		PriorityQueue<Edge<E>> Q = new PriorityQueue<Edge<E>>(); // TODO: float priority
+	LinkedList<Edge> MSTKruskal(HSgraph g) {
+		LinkedList<Edge> mst = new LinkedList<Edge>();
+		PriorityQueue<Edge> Q = new PriorityQueue<Edge>(); // TODO: float priority
 
-		for (Edge<E> e : g.edges()) Q.add(e);
+		for (Edge e : g.edges()) Q.add(e);
 
-		MFSet<E> M = new MFSet<E>(g);
+		MFSet M = new MFSet(g);
 
 		int i = g.size;
 		while(i > 1) {
-			Edge<E> e = Q.poll();
-			Node<E> s1 = M.findSet(e.getEndPoint());
-			Node<E> s2 = M.findSet(e.getStartPoint());
+			Edge e = Q.poll();
+			Node s1 = M.findSet(e.getEndPoint());
+			Node s2 = M.findSet(e.getStartPoint());
 			if (s1 != s2) {
 				M.union(s1, s2);
 				i--;

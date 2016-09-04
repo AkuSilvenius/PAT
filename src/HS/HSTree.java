@@ -1,11 +1,11 @@
 package HS;
 
-public class HSTree<E> {
+public class HSTree {
 
-	Node<E> root;
+	Node root;
 
-	public HSTree(Vertex<E> v) {
-		this.root = new Node<E>(v);
+	public HSTree(Vertex v) {
+		this.root = new Node(v);
 	}
 
 }

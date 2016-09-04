@@ -1,13 +1,9 @@
 package HS;
 
-import java.util.Iterator;
-import java.util.LinkedList;
+public class Edge extends Object implements Comparable<Object> {
 
-public class Edge<E> implements Comparable<E>, Iterable<E> {
-
-
-	Vertex<E> startPoint;
-	Vertex<E> endPoint;
+	Vertex startPoint;
+	Vertex endPoint;
 	float weight;
 	int color;
 
@@ -18,28 +14,28 @@ public class Edge<E> implements Comparable<E>, Iterable<E> {
 		this.color = HSCol.NaN;
 	}
 
-	public Edge(Vertex<E> endpoint) {
+	public Edge(Vertex endpoint) {
 		this.startPoint = null;
 		this.endPoint = endpoint;
 		this.weight = Float.NaN;
 		this.color = HSCol.NaN;
 	}
 
-	public Edge(Vertex<E> endpoint, float w) {
+	public Edge(Vertex endpoint, float w) {
 		this.startPoint = null;
 		this.endPoint = endpoint;
 		this.weight = w;
 		this.color = HSCol.NaN;
 	}
 
-	public Edge(Vertex<E> endpoint, int clr) {
+	public Edge(Vertex endpoint, int clr) {
 		this.startPoint = null;
 		this.endPoint = endpoint;
 		this.weight = Float.NaN;
 		this.color = clr;
 	}
 
-	public Edge(Vertex<E> endpoint, float w, int clr) {
+	public Edge(Vertex endpoint, float w, int clr) {
 		this.startPoint = null;
 		this.endPoint = endpoint;
 		this.weight = w;
@@ -54,28 +50,22 @@ public class Edge<E> implements Comparable<E>, Iterable<E> {
 		return this.weight;
 	}
 
-	public Vertex<E> getEndPoint() {
+	public Vertex getEndPoint() {
 		return this.endPoint;
 	}
 
-	public Vertex<E> getEndPoint(Vertex<E> v) {
+	public Vertex getEndPoint(Vertex v) {
 		if (!v.equals(this.startPoint)) return null;
 		if (v.equals(this.startPoint)) return this.endPoint;
 		return this.startPoint;
 	}
 
-	public Vertex<E> getStartPoint() {
+	public Vertex getStartPoint() {
 		return this.startPoint;
 	}
 
 	@Override
-	public Iterator<E> iterator() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public int compareTo(E o) {
+	public int compareTo(Object o) {
 		return this.compareTo(o);
 	}
 

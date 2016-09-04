@@ -1,9 +1,9 @@
 package HS;
 
-public class Node<E> {
+public class Node {
 	
-	Node<E> parent;
-	Vertex<E> element;
+	Node parent;
+	Vertex element;
 	int rank;
 	
 	public Node() {
@@ -12,25 +12,25 @@ public class Node<E> {
 		this.rank = 0;
 	}
 	
-	public Node(Vertex<E> e) {
+	public Node(Vertex e) {
 		this.element = e;
 		this.parent = null;
 		this.rank = 0;
 	}
 	
-	public Vertex<E> getElement() {
+	public Vertex getElement() {
 		return this.element;
 	}
 	
-	public Node<E> getParent() {
+	public Node getParent() {
 		return this.parent;
 	}
 	
-	public void setElement(Vertex<E> e) {
+	public void setElement(Vertex e) {
 		this.element = e;
 	}
 	
-	public void setParent(Node<E> p) {
+	public void setParent(Node p) {
 		this.parent = p;
 	}	
 	

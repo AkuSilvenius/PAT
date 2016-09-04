@@ -1,8 +1,9 @@
 package HS;
 
+import java.util.Iterator;
 import java.util.LinkedList;
 
-public class Edge<E> {
+public class Edge<E> implements Comparable<E>, Iterable<E> {
 
 
 	Vertex<E> startPoint;
@@ -66,5 +67,16 @@ public class Edge<E> {
 	public Vertex<E> getStartPoint() {
 		return this.startPoint;
 	}
-	
+
+	@Override
+	public Iterator<E> iterator() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public int compareTo(E o) {
+		return this.compareTo(o);
+	}
+
 }

@@ -17,11 +17,59 @@ public class Vertex extends Object implements Comparable<Object>, Iterable<Objec
 		this.index = -1;
 		this.weight = Float.NaN;
 	}
+	
+	public Vertex(String label) {
+		this.edges = new LinkedList<Edge>();
+		this.label = label;
+		this.color = HSCol.NaN;
+		this.index = -1;
+		this.weight = Float.NaN;
+	}
+	
+	public Vertex(int ind) {
+		this.edges = new LinkedList<Edge>();
+		this.label = "";
+		this.color = HSCol.NaN;
+		this.index = ind;
+		this.weight = Float.NaN;
+	}
+	
+	public Vertex(float w) {
+		this.edges = new LinkedList<Edge>();
+		this.label = "";
+		this.color = HSCol.NaN;
+		this.index = -1;
+		this.weight = w;
+	}
+	
+	public Vertex(float w, int ind) {
+		this.edges = new LinkedList<Edge>();
+		this.label = "";
+		this.color = HSCol.NaN;
+		this.index = ind;
+		this.weight = w;
+	}
 
 	public Vertex(int clr, int ind) {
 		this.edges = new LinkedList<Edge>();
 		this.label = "";
 		this.color = clr;
+		this.index = ind;
+		this.weight = Float.NaN;
+	}
+	
+	public Vertex(int clr, float w) {
+		this.edges = new LinkedList<Edge>();
+		this.label = "";
+		this.color = clr;
+		this.index = -1;
+		this.weight = w;
+	}
+	
+	public Vertex(String label, int ind) {
+		this.edges = new LinkedList<Edge>();
+		this.label = label;
+		this.color = HSCol.NaN;
 		this.index = ind;
 		this.weight = Float.NaN;
 	}
@@ -33,7 +81,16 @@ public class Vertex extends Object implements Comparable<Object>, Iterable<Objec
 		this.index = ind;
 		this.weight = Float.NaN;
 	}
-	public Vertex(int clr, int ind, float w) {
+	
+	public Vertex(String label, int clr, float w) {
+		this.edges = new LinkedList<Edge>();
+		this.label = label;
+		this.color = clr;
+		this.index = -1;
+		this.weight = Float.NaN;
+	}
+	
+	public Vertex(int clr, float w, int ind) {
 		this.edges = new LinkedList<Edge>();
 		this.label = "";
 		this.color = clr;
@@ -89,25 +146,31 @@ public class Vertex extends Object implements Comparable<Object>, Iterable<Objec
 
 	public Edge addEdge(Vertex v) {
 		Edge tmp = new Edge(v);
-		edges.add(tmp);
+		this.edges.add(tmp);
 		return tmp;
 	}
 
 	public Edge addEdge(Vertex v, float w) {
 		Edge tmp = new Edge(v, w);
-		edges.add(tmp);
+		this.edges.add(tmp);
 		return tmp;
 	}
 
+	public Edge addEdge(Vertex v, String label) {
+		Edge tmp = new Edge(v, label);
+		this.edges.add(tmp);
+		return tmp;
+	}
+	
 	public Edge addEdge(Vertex v, int clr) {
 		Edge tmp = new Edge(v, clr);
-		edges.add(tmp);
+		this.edges.add(tmp);
 		return tmp;
 	}
 
 	public Edge addEdge(Vertex v, float w, int clr) {
 		Edge tmp = new Edge(v, w, clr);
-		edges.add(tmp);
+		this.edges.add(tmp);
 		return tmp;
 	}
 

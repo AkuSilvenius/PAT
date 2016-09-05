@@ -4,12 +4,14 @@ public class Edge extends Object implements Comparable<Object> {
 
 	Vertex startPoint;
 	Vertex endPoint;
+	String label;
 	float weight;
 	int color;
 
 	public Edge() {
 		this.startPoint = null;
 		this.endPoint = null;
+		this.label = "";
 		this.weight = Float.NaN;
 		this.color = HSCol.NaN;
 	}
@@ -17,6 +19,7 @@ public class Edge extends Object implements Comparable<Object> {
 	public Edge(Vertex endpoint) {
 		this.startPoint = null;
 		this.endPoint = endpoint;
+		this.label = "";
 		this.weight = Float.NaN;
 		this.color = HSCol.NaN;
 	}
@@ -24,6 +27,7 @@ public class Edge extends Object implements Comparable<Object> {
 	public Edge(Vertex endpoint, float w) {
 		this.startPoint = null;
 		this.endPoint = endpoint;
+		this.label = "";
 		this.weight = w;
 		this.color = HSCol.NaN;
 	}
@@ -31,6 +35,7 @@ public class Edge extends Object implements Comparable<Object> {
 	public Edge(Vertex endpoint, int clr) {
 		this.startPoint = null;
 		this.endPoint = endpoint;
+		this.label = "";
 		this.weight = Float.NaN;
 		this.color = clr;
 	}
@@ -38,6 +43,7 @@ public class Edge extends Object implements Comparable<Object> {
 	public Edge(Vertex endpoint, float w, int clr) {
 		this.startPoint = null;
 		this.endPoint = endpoint;
+		this.label = "";
 		this.weight = w;
 		this.color = clr;
 	}

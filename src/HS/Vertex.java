@@ -2,7 +2,7 @@ package HS;
 
 import java.util.*;
 
-public class Vertex extends Object implements Comparable<Object>, Iterable<Object> {
+public class Vertex extends Object implements Comparable<Object>, Iterable<Edge> {
 
 	LinkedList<Edge> edges;
 	String label;
@@ -146,52 +146,101 @@ public class Vertex extends Object implements Comparable<Object>, Iterable<Objec
 
 	public Edge addEdge(Vertex v) {
 		Edge tmp = new Edge(v);
+		tmp.startPoint = this;
 		this.edges.add(tmp);
 		return tmp;
 	}
 
 	public Edge addEdge(Vertex v, float w) {
 		Edge tmp = new Edge(v, w);
+		tmp.startPoint = this;
 		this.edges.add(tmp);
 		return tmp;
 	}
 
 	public Edge addEdge(Vertex v, String label) {
 		Edge tmp = new Edge(v, label);
+		tmp.startPoint = this;
 		this.edges.add(tmp);
 		return tmp;
 	}
 	
 	public Edge addEdge(Vertex v, int clr) {
 		Edge tmp = new Edge(v, clr);
+		tmp.startPoint = this;
 		this.edges.add(tmp);
 		return tmp;
 	}
 
 	public Edge addEdge(Vertex v, float w, int clr) {
 		Edge tmp = new Edge(v, w, clr);
+		tmp.startPoint = this;
+		this.edges.add(tmp);
+		return tmp;
+	}
+	
+	public Edge addEdge(Vertex v, String label, int clr) { 
+		Edge tmp = new Edge(v, label, clr);
+		tmp.startPoint = this;
+		this.edges.add(tmp);
+		return tmp;
+	}
+	
+	public Edge addEdge(Vertex v, String label, int clr, float w) { 
+		Edge tmp = new Edge(v, label, clr, w);
+		tmp.startPoint = this;
 		this.edges.add(tmp);
 		return tmp;
 	}
 
 	public void removeEdge(Edge e) {
 		for (Edge edge : this.edges)
-			if (edge.equals(e)) edges.r
+			if (edge.equals(e)) this.edges.remove(e); // hidas
+	}
+	
+	public void removeEdges() {
+		this.edges.removeAll(edges);
+			
 	}
 	
 	public Iterable<Vertex> neighbors() {
-		return null;
-
+		LinkedList<Vertex> tmp = new LinkedList<Vertex>();
+		for (Edge e : this.edges) tmp.add(e.getEndPoint());
+		return tmp;
+		
+	}
+	
+	public Iterator<Vertex> neighborsIterator() {
+		LinkedList<Vertex> tmp = new LinkedList<Vertex>();
+		for (Edge e : this.edges) tmp.add(e.getEndPoint());
+		return tmp.iterator();
+		
 	}
 
 	public boolean isAdjacent(Vertex v) {
-
+		for(Edge e:this.edges){
+			if(e.getEndPoint().equals(v)){
+				return true;
+			}
+		}for (Edge e:v.edges){
+			if(e.getEndPoint().equals(this)){
+				return true;
+			}
+		}
 
 		return false;
 	}
-
+	
+	public Iterator<Edge> edgeIterator() {
+		return this.iterator();
+	}
+	
+	public Iterable<Edge> edges() {
+		return this.edges;
+	}
+	
 	@Override
-	public Iterator<Object> iterator() {
+	public Iterator<Edge> iterator() {
 		return this.iterator();
 	}
 

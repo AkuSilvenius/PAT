@@ -2,7 +2,7 @@ package HS;
 
 import java.util.*;
 
-public class HSgraph extends Object implements Iterable<Object> {
+public class HSgraph extends Object implements Iterable<Vertex> {
 
 	LinkedList<Vertex> vlist;
 	LinkedList<Edge> elist;
@@ -140,7 +140,7 @@ public class HSgraph extends Object implements Iterable<Object> {
 		return mst;
 	}
 
-	public Iterator<Object> iterator() {
+	public Iterator<Vertex> iterator() {
 		return this.vlist.iterator();
 	}
 

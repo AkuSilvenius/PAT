@@ -2,7 +2,7 @@ package HS;
 
 import java.util.*;
 
-public class HSgraph extends Object implements Iterable<Vertex> {
+public class HSgraph extends Object implements Iterable<Vertex>, HSgraphIn {
 
 	LinkedList<Vertex> vlist;
 	LinkedList<Edge> elist;
@@ -113,31 +113,6 @@ public class HSgraph extends Object implements Iterable<Vertex> {
 		for (Edge e : this.elist)
 			if (e.getEndPoint().equals(v) || e.getStartPoint().equals(v))
 				elist.remove(this.elist.indexOf(e));
-	}
-	
-	
-
-	LinkedList<Edge> MSTKruskal(HSgraph g) {
-		LinkedList<Edge> mst = new LinkedList<Edge>();
-		PriorityQueue<Edge> Q = new PriorityQueue<Edge>(); // TODO: float priority
-
-		for (Edge e : g.edges()) Q.add(e);
-
-		MFSet M = new MFSet(g);
-
-		int i = g.size;
-		while(i > 1) {
-			Edge e = Q.poll();
-			Node s1 = M.findSet(e.getEndPoint());
-			Node s2 = M.findSet(e.getStartPoint());
-			if (s1 != s2) {
-				M.union(s1, s2);
-				i--;
-				mst.add(e);
-			}
-		}
-
-		return mst;
 	}
 
 	public Iterator<Vertex> iterator() {

@@ -1,8 +1,9 @@
 package HS;
 
 import java.util.*;
+import HS.HSTree.*;
 
-public class MFSet {
+public class MFSet implements MFSetIn {
 
 	LinkedList<HSTree> forest;
 

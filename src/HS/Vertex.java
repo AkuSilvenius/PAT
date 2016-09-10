@@ -2,7 +2,7 @@ package HS;
 
 import java.util.*;
 
-public class Vertex extends Object implements Comparable<Object>, Iterable<Edge> {
+public class Vertex extends Object implements Comparable<Object>, Iterable<Edge>, VertexIn {
 
 	LinkedList<Edge> edges;
 	String label;
@@ -218,11 +218,11 @@ public class Vertex extends Object implements Comparable<Object>, Iterable<Edge>
 	}
 
 	public boolean isAdjacent(Vertex v) {
-		for(Edge e:this.edges){
+		for(Edge e : this.edges){
 			if(e.getEndPoint().equals(v)){
 				return true;
 			}
-		}for (Edge e:v.edges){
+		}for (Edge e : v.edges){
 			if(e.getEndPoint().equals(this)){
 				return true;
 			}

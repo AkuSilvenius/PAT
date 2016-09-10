@@ -1,6 +1,6 @@
 package HS;
 
-public class Edge extends Object implements Comparable<Object> {
+public class Edge extends Object implements Comparable<Object>, EdgeIn {
 
 	Vertex startPoint;
 	Vertex endPoint;
@@ -48,7 +48,7 @@ public class Edge extends Object implements Comparable<Object> {
 		this.color = HSCol.NaN;
 	}
 	
-	public Edge(Vertex endpoint, float w, int clr) { //uusi
+	public Edge(Vertex endpoint, float w, int clr) {
 		this.startPoint = null;
 		this.endPoint = endpoint;
 		this.label = "";
@@ -56,7 +56,7 @@ public class Edge extends Object implements Comparable<Object> {
 		this.color = clr;
 	}
 	
-	public Edge(Vertex endpoint, String label, int clr) { //uusi
+	public Edge(Vertex endpoint, String label, int clr) {
 		this.startPoint = null;
 		this.endPoint = endpoint;
 		this.label = "";
@@ -64,7 +64,7 @@ public class Edge extends Object implements Comparable<Object> {
 		this.color = clr;
 	}
 	
-	public Edge(Vertex endpoint, String label, int clr, float w) { //uusi
+	public Edge(Vertex endpoint, String label, int clr, float w) {
 		this.startPoint = null;
 		this.endPoint = endpoint;
 		this.label = "";
@@ -112,7 +112,6 @@ public class Edge extends Object implements Comparable<Object> {
 		return this.startPoint;
 	}
 
-	@Override
 	public int compareTo(Object o) {
 		return this.compareTo(o);
 	}

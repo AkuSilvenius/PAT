@@ -1,15 +1,25 @@
 package HS;
 
-public interface EdgeIn<E> {
+public interface EdgeIn {
 
 	void setWeight(int w);
 
+	void setLabel(String l);
+
+	void setColor(int clr);
+
+	boolean goesOut(Vertex v);
+
 	float getWeight();
 
-	Vertex<E> getEndPoint();
+	Vertex getEndPoint();
 
-	Vertex<E> getEndPoint(Vertex<E> v);
+	String getLabel();
 
-	Vertex<E> getStartPoint();
+	Vertex getEndPoint(Vertex v);
+
+	Vertex getStartPoint();
+
+	int compareTo(Object o);
 
 }

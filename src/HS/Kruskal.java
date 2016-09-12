@@ -4,9 +4,9 @@ import java.util.LinkedList;
 import java.util.PriorityQueue;
 import HS.HSTree.*;
 
-public class Kruskal {
+public class Kruskal implements KruskalIn {
 	
-	LinkedList<Edge> MSTKruskal(HSgraph g) {
+	public LinkedList<Edge> MSTKruskal(HSgraph g) {
 		LinkedList<Edge> mst = new LinkedList<Edge>();
 		PriorityQueue<Edge> Q = new PriorityQueue<Edge>();
 

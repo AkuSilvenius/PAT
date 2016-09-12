@@ -2,6 +2,15 @@ package HS;
 
 import java.util.Iterator;
 
+// attribuutit:
+// LinkedList<Vertex> vlist;
+// LinkedList<Edge> elist;
+// int size;
+
+/**
+ * Rajapinta suunnatun verkon operaatioihin.
+ * @author Aku Silvenius
+ */
 public interface HSgraphIn {
 
 	/**

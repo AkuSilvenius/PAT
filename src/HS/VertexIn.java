@@ -2,12 +2,17 @@ package HS;
 
 import java.util.Iterator;
 
+// attribuutit:
+// LinkedList<Edge> edges;
+// String label;
+// int color;
+// int index;
+// float weight;
+
 /**
  * Rajapinta solmujen käsittelyyn
  * @author Teemu Holttinen
- *
  */
-
 public interface VertexIn {
 	
 	/**

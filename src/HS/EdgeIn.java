@@ -1,12 +1,16 @@
 package HS;
 
+// attribuutit:
+// Vertex startPoint;
+// Vertex endPoint;
+// String label;
+// float weight;
+// int color;
+
 /**
  * Rajapinta kaarien käsittelyyn
- * 
  * @author Teemu Holttinen
- *
  */
-
 public interface EdgeIn {
 	
 	/**

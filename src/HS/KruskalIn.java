@@ -14,6 +14,8 @@ public interface KruskalIn {
 	 * solmut pienimmillä mahdollisilla kaarilla.
 	 * @param g - verkko, jolle MST halutaan löytää
 	 * @return lista kaarista, joista MST koostuu
+	 * 
+	 * @author Aku Silvenius
 	 */
 	LinkedList<Edge> MSTKruskal(HSgraph g);
 

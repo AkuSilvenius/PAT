@@ -6,10 +6,10 @@ public class HSgraph extends Object implements Iterable<Vertex>, HSgraphIn {
 
 	LinkedList<Vertex> vlist;
 	LinkedList<Edge> elist;
-	int size;
 
 	public HSgraph(int vertices, int edges) {
-		this.size = vertices;
+		this.vlist = new LinkedList<Vertex>();
+		this.elist = new LinkedList<Edge>();
 	}
 	
 	public Vertex addVertex() {
@@ -85,7 +85,7 @@ public class HSgraph extends Object implements Iterable<Vertex>, HSgraphIn {
 	}
 
 	public int size() {
-		return this.size;
+		return this.vlist.size();
 	}
 	
 	public Iterable<Vertex> vertices() {

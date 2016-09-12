@@ -39,7 +39,7 @@ public interface NodeIn {
 
 	/**
 	 * Asettaa puun solmun parent-muuttujaksi parametrina annetun puun solmun.
-	 * @param y - puun solmu
+	 * @param p - puun solmu
 	 * 
 	 * @author Aku Silvenius
 	 */

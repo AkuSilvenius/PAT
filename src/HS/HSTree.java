@@ -16,13 +16,13 @@ public class HSTree {
 
 		public Node() {
 			this.element = null;
-			this.parent = null;
+			this.parent = this;
 			this.rank = 0;
 		}
 
 		public Node(Vertex e) {
 			this.element = e;
-			this.parent = null;
+			this.parent = this;
 			this.rank = 0;
 		}
 

@@ -14,7 +14,7 @@ public class Kruskal implements KruskalIn {
 
 		MFSet M = new MFSet(g);
 
-		int i = g.size;
+		int i = g.size();
 		while(i > 1) {
 			Edge e = Q.poll();
 			Node s1 = M.findSet(e.getEndPoint());

@@ -66,22 +66,6 @@ public interface HSgraphIn {
 	Iterable<Vertex> vertices();
 
 	/**
-	 * Palauttaa Iteraattorin verkon solmuista.
-	 * @return Iterator verkon solmuista
-	 * 
-	 * @author Aku Silvenius
-	 */
-	Iterator<Vertex> vertexIterator();
-
-	/**
-	 * Palauttaa Iteraattorin verkon kaarista.
-	 * @return Iterator verkon kaarista
-	 * 
-	 * @author Aku Silvenius
-	 */
-	Iterator<Edge> edgeIterator();
-
-	/**
 	 * Palauttaa Iterable-toteutuksen verkon kaarista.
 	 * @return Iterable-toteutus verkon kaarista
 	 * 

@@ -103,13 +103,6 @@ public class Vertex extends Object implements Comparable<Object>, Iterable<Edge>
 		return tmp;
 		
 	}
-	
-	public Iterator<Vertex> neighborsIterator() {
-		LinkedList<Vertex> tmp = new LinkedList<Vertex>();
-		for (Edge e : this.edges) tmp.add(e.getEndPoint());
-		return tmp.iterator();
-		
-	}
 
 	public boolean isAdjacent(Vertex v) {
 		for(Edge e : this.edges){
@@ -123,10 +116,6 @@ public class Vertex extends Object implements Comparable<Object>, Iterable<Edge>
 		}
 
 		return false;
-	}
-	
-	public Iterator<Edge> edgeIterator() {
-		return this.iterator();
 	}
 	
 	public Iterable<Edge> edges() {

@@ -113,14 +113,6 @@ public interface VertexIn {
 	Iterable<Vertex> neighbors();
 	
 	/**
-	 * Palauttaa iteraattorin solmun naapureista
-	 * @return iteraattori solmun naapureista
-	 * 
-	 * @author Teemu Holttinen
-	 */
-	Iterator<Vertex> neighborsIterator();
-	
-	/**
 	 * Palauttaa boolean arvon onko t‰m‰ solmu ja m‰‰ritelty solmu yhdistetty kaarella
 	 * @param v - M‰‰ritelty solmu
 	 * @return boolean
@@ -128,14 +120,6 @@ public interface VertexIn {
 	 * @author Teemu Holttinen
 	 */
 	boolean isAdjacent(Vertex v);
-	
-	/**
-	 * Palauttaa iteraattorin t‰st‰ solmusta l‰htevist‰ kaarista
-	 * @return iteraattori l‰htevist‰ kaarista
-	 * 
-	 * @author Teemu Holttinen
-	 */
-	Iterator<Edge> edgeIterator();
 	
 	/**
 	 * Palauttaa iterablen t‰st‰ solmusta l‰htevist‰ kaarista

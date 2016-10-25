@@ -24,7 +24,7 @@ public class HSgraph extends Object implements Iterable<Vertex>, HSgraphIn {
 		return tmp;
 	}
 	
-	public Vertex addVertex(String label) { //
+	public Vertex addVertex(String label) { 
 		Vertex tmp = new Vertex(label);
 		this.vlist.add(tmp);
 		return tmp;
@@ -42,14 +42,6 @@ public class HSgraph extends Object implements Iterable<Vertex>, HSgraphIn {
 	
 	public Iterable<Vertex> vertices() {
 		return this.vlist;
-	}
-
-	public Iterator<Vertex> vertexIterator() {
-		return this.vlist.iterator();
-	}
-	
-	public Iterator<Edge> edgeIterator() {
-		return this.elist.iterator();
 	}
 	
 	public Iterable<Edge> edges() {

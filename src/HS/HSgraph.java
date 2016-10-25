@@ -18,68 +18,20 @@ public class HSgraph extends Object implements Iterable<Vertex>, HSgraphIn {
 		return tmp;
 	}
 	
-	public Vertex addVertex(int ind) {
-		Vertex tmp = new Vertex(ind);
+	public Vertex addVertex(int clr) {
+		Vertex tmp = new Vertex(clr);
 		this.vlist.add(tmp);
 		return tmp;
 	}
 	
-	public Vertex addVertex(String label) {
+	public Vertex addVertex(String label) { //
 		Vertex tmp = new Vertex(label);
 		this.vlist.add(tmp);
 		return tmp;
 	}
 	
-	public Vertex addVertex(float w) {
-		Vertex tmp = new Vertex(w);
-		this.vlist.add(tmp);
-		return tmp;
-	}
-	
-	public Vertex addVertex(float w, int ind) {
-		Vertex tmp = new Vertex(w, ind);
-		this.vlist.add(tmp);
-		return tmp;
-	}
-	
-	public Vertex addVertex(int clr, float w) {
-		Vertex tmp = new Vertex(clr, w);
-		this.vlist.add(tmp);
-		return tmp;
-	}
-	
-	public Vertex addVertex(int clr, int ind) {
-		Vertex tmp = new Vertex(clr, ind);
-		this.vlist.add(tmp);
-		return tmp;
-	}
-	
-	public Vertex addVertex(String label, int ind) {
-		Vertex tmp = new Vertex(label, ind);
-		this.vlist.add(tmp);
-		return tmp;
-	}
-	
-	public Vertex addVertex(String label, int clr, float w) {
-		Vertex tmp = new Vertex(label, clr, w);
-		this.vlist.add(tmp);
-		return tmp;
-	}
-	
-	public Vertex addVertex(int clr, float w, int ind) {
-		Vertex tmp = new Vertex(clr, w, ind);
-		this.vlist.add(tmp);
-		return tmp;
-	}
-	
-	public Vertex addVertex(String label, int clr, int ind) {
-		Vertex tmp = new Vertex(label, clr, ind);
-		this.vlist.add(tmp);
-		return tmp;
-	}
-	
-	public Vertex addVertex(String label, int clr, int ind, float w) {
-		Vertex tmp = new Vertex(label, clr, ind, w);
+	public Vertex addVertex(int clr, String label) {
+		Vertex tmp = new Vertex(clr,label);
 		this.vlist.add(tmp);
 		return tmp;
 	}

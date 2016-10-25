@@ -7,105 +7,31 @@ public class Vertex extends Object implements Comparable<Object>, Iterable<Edge>
 	LinkedList<Edge> edges;
 	String label;
 	int color;
-	int index;
-	float weight;
 
 	public Vertex() {
 		this.edges = new LinkedList<Edge>();
 		this.label = "";
 		this.color = HSCol.NaN;
-		this.index = -1;
-		this.weight = Float.NaN;
 	}
 	
 	public Vertex(String label) {
 		this.edges = new LinkedList<Edge>();
 		this.label = label;
 		this.color = HSCol.NaN;
-		this.index = -1;
-		this.weight = Float.NaN;
 	}
 	
-	public Vertex(int ind) {
-		this.edges = new LinkedList<Edge>();
-		this.label = "";
-		this.color = HSCol.NaN;
-		this.index = ind;
-		this.weight = Float.NaN;
-	}
-	
-	public Vertex(float w) {
-		this.edges = new LinkedList<Edge>();
-		this.label = "";
-		this.color = HSCol.NaN;
-		this.index = -1;
-		this.weight = w;
-	}
-	
-	public Vertex(float w, int ind) {
-		this.edges = new LinkedList<Edge>();
-		this.label = "";
-		this.color = HSCol.NaN;
-		this.index = ind;
-		this.weight = w;
-	}
-
-	public Vertex(int clr, int ind) {
+	public Vertex(int clr) {
 		this.edges = new LinkedList<Edge>();
 		this.label = "";
 		this.color = clr;
-		this.index = ind;
-		this.weight = Float.NaN;
 	}
 	
-	public Vertex(int clr, float w) {
-		this.edges = new LinkedList<Edge>();
-		this.label = "";
-		this.color = clr;
-		this.index = -1;
-		this.weight = w;
-	}
-	
-	public Vertex(String label, int ind) {
+	public Vertex(int clr, String label) {
 		this.edges = new LinkedList<Edge>();
 		this.label = label;
-		this.color = HSCol.NaN;
-		this.index = ind;
-		this.weight = Float.NaN;
+		this.color = clr;	
 	}
 	
-	public Vertex(String label, int clr, int ind) {
-		this.edges = new LinkedList<Edge>();
-		this.label = label;
-		this.color = clr;
-		this.index = ind;
-		this.weight = Float.NaN;
-	}
-	
-	public Vertex(String label, int clr, float w) {
-		this.edges = new LinkedList<Edge>();
-		this.label = label;
-		this.color = clr;
-		this.index = -1;
-		this.weight = Float.NaN;
-	}
-	
-	public Vertex(int clr, float w, int ind) {
-		this.edges = new LinkedList<Edge>();
-		this.label = "";
-		this.color = clr;
-		this.index = ind;
-		this.weight = w;
-	}
-	
-	public Vertex(String label, int clr, int ind, float w) {
-		this.edges = new LinkedList<Edge>();
-		this.label = label;
-		this.color = clr;
-		this.index = ind;
-		this.weight = w;
-	}
-
 	public int getColor() {
 		return this.color;
 	}
@@ -116,33 +42,21 @@ public class Vertex extends Object implements Comparable<Object>, Iterable<Edge>
 		return null;
 	}
 
-	public int getIndex() {
-		return this.index;
-	}
 
 	public String getLabel() {
 		return this.label;
 	}
 
-	public float getWeight() {
-		return this.weight;
-	}
 
 	public void setColor(int clr) {
 		this.color = clr;
 	}
 
-	public void setIndex(int ind) {
-		this.index = ind;
-	}
 
 	public void setLabel(String label) {
 		this.label = label;
 	}
 
-	public void setWeight(float w) {
-		this.weight = w;
-	}
 
 	public Edge addEdge(Vertex v) {
 		Edge tmp = new Edge(v);
@@ -158,12 +72,6 @@ public class Vertex extends Object implements Comparable<Object>, Iterable<Edge>
 		return tmp;
 	}
 
-	public Edge addEdge(Vertex v, String label) {
-		Edge tmp = new Edge(v, label);
-		tmp.startPoint = this;
-		this.edges.add(tmp);
-		return tmp;
-	}
 	
 	public Edge addEdge(Vertex v, int clr) {
 		Edge tmp = new Edge(v, clr);
@@ -179,20 +87,6 @@ public class Vertex extends Object implements Comparable<Object>, Iterable<Edge>
 		return tmp;
 	}
 	
-	public Edge addEdge(Vertex v, String label, int clr) { 
-		Edge tmp = new Edge(v, label, clr);
-		tmp.startPoint = this;
-		this.edges.add(tmp);
-		return tmp;
-	}
-	
-	public Edge addEdge(Vertex v, String label, int clr, float w) { 
-		Edge tmp = new Edge(v, label, clr, w);
-		tmp.startPoint = this;
-		this.edges.add(tmp);
-		return tmp;
-	}
-
 	public void removeEdge(Edge e) {
 		for (Edge edge : this.edges)
 			if (edge.equals(e)) this.edges.remove(e); // hidas

@@ -4,14 +4,12 @@ public class Edge extends Object implements Comparable<Object>, EdgeIn {
 
 	Vertex startPoint;
 	Vertex endPoint;
-	String label;
 	float weight;
 	int color;
 
 	public Edge() {
 		this.startPoint = null;
 		this.endPoint = null;
-		this.label = "";
 		this.weight = Float.NaN;
 		this.color = HSCol.NaN;
 	}
@@ -19,7 +17,6 @@ public class Edge extends Object implements Comparable<Object>, EdgeIn {
 	public Edge(Vertex endpoint) {
 		this.startPoint = null;
 		this.endPoint = endpoint;
-		this.label = "";
 		this.weight = Float.NaN;
 		this.color = HSCol.NaN;
 	}
@@ -27,7 +24,6 @@ public class Edge extends Object implements Comparable<Object>, EdgeIn {
 	public Edge(Vertex endpoint, float w) {
 		this.startPoint = null;
 		this.endPoint = endpoint;
-		this.label = "";
 		this.weight = w;
 		this.color = HSCol.NaN;
 	}
@@ -35,7 +31,6 @@ public class Edge extends Object implements Comparable<Object>, EdgeIn {
 	public Edge(Vertex endpoint, int clr) {
 		this.startPoint = null;
 		this.endPoint = endpoint;
-		this.label = "";
 		this.weight = Float.NaN;
 		this.color = clr;
 	}
@@ -43,7 +38,6 @@ public class Edge extends Object implements Comparable<Object>, EdgeIn {
 	public Edge(Vertex endpoint, String label) {
 		this.startPoint = null;
 		this.endPoint = endpoint;
-		this.label = "";
 		this.weight = Float.NaN;
 		this.color = HSCol.NaN;
 	}
@@ -51,7 +45,6 @@ public class Edge extends Object implements Comparable<Object>, EdgeIn {
 	public Edge(Vertex endpoint, float w, int clr) {
 		this.startPoint = null;
 		this.endPoint = endpoint;
-		this.label = "";
 		this.weight = w;
 		this.color = clr;
 	}
@@ -59,7 +52,6 @@ public class Edge extends Object implements Comparable<Object>, EdgeIn {
 	public Edge(Vertex endpoint, String label, int clr) {
 		this.startPoint = null;
 		this.endPoint = endpoint;
-		this.label = "";
 		this.weight = Float.NaN;
 		this.color = clr;
 	}
@@ -67,7 +59,6 @@ public class Edge extends Object implements Comparable<Object>, EdgeIn {
 	public Edge(Vertex endpoint, String label, int clr, float w) {
 		this.startPoint = null;
 		this.endPoint = endpoint;
-		this.label = "";
 		this.weight = w;
 		this.color = clr;
 	}
@@ -75,10 +66,7 @@ public class Edge extends Object implements Comparable<Object>, EdgeIn {
 	public void setWeight(int w) {
 		this.weight = w;
 	}
-	
-	public void setLabel(String l) {
-		this.label = l;
-	}
+
 	
 	public void setColor(int clr) {
 		this.color = clr;
@@ -98,10 +86,6 @@ public class Edge extends Object implements Comparable<Object>, EdgeIn {
 		return this.endPoint;
 	}
 	
-	public String getLabel() {
-		return this.label;
-	}
-
 	public Vertex getEndPoint(Vertex v) {
 		if (!v.equals(this.startPoint)) return null;
 		if (v.equals(this.startPoint)) return this.endPoint;

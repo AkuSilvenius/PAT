@@ -22,14 +22,6 @@ public interface EdgeIn {
 	void setWeight(int w);
 	
 	/**
-	 * Kaaren label-tiedon m‰‰ritt‰minen
-	 * @param l - kaaren label-tieto
-	 * 
-	 * @author Teemu Holttinen
-	 */
-	void setLabel(String l);
-	
-	/**
 	 * Kaaren v‰rin m‰‰ritt‰minen
 	 * @param clr - v‰ri
 	 * 
@@ -54,7 +46,6 @@ public interface EdgeIn {
 	 */
 	float getWeight();
 	
-	
 	/**
 	 * Palauttaa kaaren loppusolmun
 	 * @return kaaren loppusolmu
@@ -62,15 +53,6 @@ public interface EdgeIn {
 	 * @author Teemu Holttinen
 	 */
 	Vertex getEndPoint();
-	
-	
-	/**
-	 * Palauttaa kaaren label-tiedon
-	 * @return kaaren label-tieto
-	 * 
-	 * @author Teemu Holttinen
-	 */
-	String getLabel();
 	
 	
 	/**

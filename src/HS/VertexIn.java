@@ -31,15 +31,7 @@ public interface VertexIn {
 	 * @author Teemu Holttinen
 	 */
 	Edge getEdge(Vertex v);
-	
-	/**
-	 * Palauttaa solmun indeksin
-	 * @return indeksi
-	 * 
-	 * @author Teemu Holttinen
-	 */
-	int getIndex();
-	
+
 	/**
 	 * Palauttaa solmun label-tiedon
 	 * @return label-tieto
@@ -47,15 +39,7 @@ public interface VertexIn {
 	 * @author Teemu Holttinen
 	 */
 	String getLabel();
-	
-	/**
-	 * Palauttaa solmun painon
-	 * @return Solmun paino
-	 * 
-	 * @author Teemu Holttinen
-	 */
-	float getWeight();
-	
+
 	/**
 	 * Asettaa solmulle v‰rin
 	 * @param clr - v‰ri
@@ -63,30 +47,6 @@ public interface VertexIn {
 	 * @author Teemu Holttinen
 	 */
 	void setColor(int clr);
-
-	/**
-	 * Asettaa solmulle indeksin
-	 * @param ind - indeksi
-	 * 
-	 * @author Teemu Holttinen
-	 */
-	void setIndex(int ind);
-	
-	/**
-	 * Asettaa solmulle label-tiedon
-	 * @param label - label-tieto
-	 * 
-	 * @author Teemu Holttinen
-	 */
-	void setLabel(String label);
-	
-	/**
-	 * Asettaa solmulle painon
-	 * @param w - paino
-	 * 
-	 * @author Teemu Holttinen
-	 */
-	void setWeight(float w);
 
 	/**
 	 * Lis‰‰ kaaren t‰m‰n solmun ja m‰‰ritetyn solmun v‰lille
@@ -110,16 +70,6 @@ public interface VertexIn {
 	/**
 	 * Lis‰‰ kaaren t‰m‰n solmun ja m‰‰ritetyn solmun v‰lille lis‰tiedoilla
 	 * @param v - m‰‰ritelty solmu
-	 * @param label - kaaren label-tieto
-	 * @return uusi kaari
-	 * 
-	 * @author Teemu Holttinen
-	 */
-	Edge addEdge(Vertex v, String label);
-	
-	/**
-	 * Lis‰‰ kaaren t‰m‰n solmun ja m‰‰ritetyn solmun v‰lille lis‰tiedoilla
-	 * @param v - m‰‰ritelty solmu
 	 * @param clr - kaaren v‰ri
 	 * @return uusi kaari
 	 * 
@@ -138,28 +88,6 @@ public interface VertexIn {
 	 */
 	Edge addEdge(Vertex v, float w, int clr);
 	
-	/**
-	 * Lis‰‰ kaaren t‰m‰n solmun ja m‰‰ritetyn solmun v‰lille lis‰tiedoilla
-	 * @param v - m‰‰ritelty solmu
-	 * @param label - kaaren label-tieto
-	 * @param clr - kaaren v‰ri
-	 * @return uusi kaari®
-	 * 
-	 * @author Teemu Holttinen
-	 */
-	Edge addEdge(Vertex v, String label, int clr);
-	
-	/**
-	 * Lis‰‰ kaaren t‰m‰n solmun ja m‰‰ritetyn solmun v‰lille lis‰tiedoilla
-	 * @param v - m‰‰ritelty solmu
-	 * @param label - kaaren label tieto
-	 * @param clr - kaaren v‰ri
-	 * @param w - kaaren paino
-	 * @return uusi kaari
-	 * 
-	 * @author Teemu Holttinen
-	 */
-	Edge addEdge(Vertex v, String label, int clr, float w);
 	
 	/**
 	 * Poistaa m‰‰ritellyn kaaren t‰st‰ solmusta

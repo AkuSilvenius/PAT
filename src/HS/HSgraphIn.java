@@ -23,15 +23,6 @@ public interface HSgraphIn {
 
 	/**
 	 * Lis‰‰ verkkoon uuden solmun tarkennetuilla parametreilla.
-	 * @param ind - uuden solmun indeksi
-	 * @return uusi solmu
-	 * 
-	 * @author Aku Silvenius
-	 */
-	Vertex addVertex(int ind);
-
-	/**
-	 * Lis‰‰ verkkoon uuden solmun tarkennetuilla parametreilla.
 	 * @param label - uuden solmun nimi
 	 * @return uusi solmu
 	 * 
@@ -41,97 +32,22 @@ public interface HSgraphIn {
 
 	/**
 	 * Lis‰‰ verkkoon uuden solmun tarkennetuilla parametreilla.
-	 * @param w - uuden solmun paino
-	 * @return uusi solmu
-	 * 
-	 * @author Aku Silvenius
-	 */
-	Vertex addVertex(float w);
-
-	/**
-	 * Lis‰‰ verkkoon uuden solmun tarkennetuilla parametreilla.
-	 * @param w - uuden solmun paino
-	 * @param ind - uuden solmun indeksi
-	 * @return uusi solmu
-	 * 
-	 * @author Aku Silvenius
-	 */
-	Vertex addVertex(float w, int ind);
-
-	/**
-	 * Lis‰‰ verkkoon uuden solmun tarkennetuilla parametreilla.
-	 * @param clr - uuden solmun v‰ri
-	 * @param w - uuden solmun paino
-	 * @return uusi solmu
-	 * 
-	 * @author Aku Silvenius
-	 */
-	Vertex addVertex(int clr, float w);
-
-	/**
-	 * Lis‰‰ verkkoon uuden solmun tarkennetuilla parametreilla.
-	 * @param clr - uuden solmun v‰ri
-	 * @param ind - uuden solmun indeksi
-	 * @return uusi solmu
-	 * 
-	 * @author Aku Silvenius
-	 */
-	Vertex addVertex(int clr, int ind);
-
-	/**
-	 * Lis‰‰ verkkoon uuden solmun tarkennetuilla parametreilla.
-	 * @param label - uuden solmun nimi
-	 * @param ind - uuden solmun indeksi
-	 * @return uusi solmu
-	 * 
-	 * @author Aku Silvenius
-	 */
-	Vertex addVertex(String label, int ind);
-
-	/**
-	 * Lis‰‰ verkkoon uuden solmun tarkennetuilla parametreilla.
 	 * @param label - uuden solmun nimi
 	 * @param clr - uuden solmun v‰ri
-	 * @param w - uuden solmun paino
 	 * @return uusi solmu
 	 * 
 	 * @author Aku Silvenius
 	 */
-	Vertex addVertex(String label, int clr, float w);
+	Vertex addVertex(int clr, String label);
 
 	/**
 	 * Lis‰‰ verkkoon uuden solmun tarkennetuilla parametreilla.
 	 * @param clr - uuden solmun v‰ri
-	 * @param w - uuden solmun paino
-	 * @param ind - uuden solmun indeksi
 	 * @return uusi solmu
 	 * 
 	 * @author Aku Silvenius
 	 */
-	Vertex addVertex(int clr, float w, int ind);
-
-	/**
-	 * Lis‰‰ verkkoon uuden solmun tarkennetuilla parametreilla.
-	 * @param label - uuden solmun nimi
-	 * @param clr - uuden solmun v‰ri
-	 * @param ind - uuden solmun indeksi
-	 * @return uusi solmu
-	 * 
-	 * @author Aku Silvenius
-	 */
-	Vertex addVertex(String label, int clr, int ind);
-
-	/**
-	 * Lis‰‰ verkkoon uuden solmun tarkennetuilla parametreilla.
-	 * @param label - uuden solmun nimi
-	 * @param clr - uuden solmun v‰ri
-	 * @param ind - uuden solmun indeksi
-	 * @param w - uuden solmun paino
-	 * @return uusi solmu
-	 * 
-	 * @author Aku Silvenius
-	 */
-	Vertex addVertex(String label, int clr, int ind, float w);
+	Vertex addVertex(int clr);
 
 	/**
 	 * Palauttaa verkon solmujen lukum‰‰r‰n.

@@ -1,6 +1,6 @@
 package HS;
 
-import java.util.*;
+import java.util.LinkedList;
 import HS.HSTree.*;
 
 public class MFSet implements MFSetIn {

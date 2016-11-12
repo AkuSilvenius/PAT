@@ -7,7 +7,7 @@ public class HSgraph extends Object implements Iterable<Vertex>, HSgraphIn {
 	LinkedList<Vertex> vlist;
 	LinkedList<Edge> elist;
 
-	public HSgraph(int vertices, int edges) {
+	public HSgraph() {
 		this.vlist = new LinkedList<Vertex>();
 		this.elist = new LinkedList<Edge>();
 	}

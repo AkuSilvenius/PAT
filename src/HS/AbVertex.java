@@ -1,7 +1,6 @@
 package HS;
 
 import java.util.*;
-
 import HS_in.Vertex;
 
 public class AbVertex extends Object implements Comparable<Object>, Iterable<AbEdge>, Vertex {

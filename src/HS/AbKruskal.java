@@ -4,9 +4,8 @@ import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.PriorityQueue;
 import HS.AbTree.AbNode;
-import HS_in.Kruskal;
 
-public abstract class AbKruskal implements Kruskal {
+public abstract class AbKruskal implements HS_in.Kruskal {
 	
 	public LinkedList<AbEdge> MSTKruskal(AbGraph g) {
 		

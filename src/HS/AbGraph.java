@@ -1,14 +1,13 @@
 package HS;
 
-import java.util.*;
+import java.util.LinkedList;
+import java.util.Iterator;
 
-import HS_in.Graph;
-
-public class AbGraph extends Object implements Iterable<AbVertex>, Graph {
+public class AbGraph extends Object implements Iterable<AbVertex>, HS_in.Graph {
 
 	LinkedList<AbVertex> vlist;
 	LinkedList<AbEdge> elist;
-
+	
 	public AbGraph() {
 		this.vlist = new LinkedList<AbVertex>();
 		this.elist = new LinkedList<AbEdge>();

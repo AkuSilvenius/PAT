@@ -4,7 +4,10 @@ import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.HashMap;
 import java.util.LinkedList;
+import java.util.Map;
+
 import javax.swing.*;
 import HS.*;
 
@@ -87,13 +90,74 @@ public class Christofides extends JFrame {
 			}
 			
 			if (e.getSource() == christo) {
-				AbGraph a = christofides(g);
+				t.setText("Lasketaan...");
+				LinkedList<AbEdge> a = christofides(g);
+				System.out.println(a.size());
+				Object opt[] = {"Sulje"};
+				String viesti = tulosviesti(a); 
+				JOptionPane.showOptionDialog(
+						null,
+						viesti,
+						"Christofides",
+						JOptionPane.INFORMATION_MESSAGE,
+						JOptionPane.PLAIN_MESSAGE,
+						null,
+						opt,
+						opt[0]);
+				t.setText("Tila");
+				
 			}
 		}
 
-		private AbGraph christofides(AbGraph g) {
+		private String tulosviesti(LinkedList<AbEdge> a) {
+			String tmp = "Kauppamatkaajan reitti:\n";
+			String s = a.getFirst().getStartPoint().getLabel() + "->";
+			tmp.concat(s);
+			for (AbEdge e : a) {
+				s = e.getEndPoint().getLabel() + "->";
+				tmp.concat(s);
+			}
+			return tmp;
+		}
+
+		private LinkedList<AbEdge> christofides(AbGraph g) {
 			LinkedList<AbEdge> tmp = MSTKruskal(g);
-			return g;
+			System.out.println(tmp.size());
+			EulerTour(tmp);
+			Shortcuts(tmp);
+			return tmp;
+		}
+
+		private void Shortcuts(LinkedList<AbEdge> tmp) {
+			
+		}
+
+		private void EulerTour(LinkedList<AbEdge> tmp) {
+			HashMap<AbVertex, Boolean> oddNodes = new HashMap<AbVertex, Boolean>();
+			// OddNodes: etsit‰‰n solmut, joilla pariton m‰‰r‰ kaaria
+			for (AbEdge e : tmp) {
+				oddNodes.put(e.getStartPoint(), false);
+				oddNodes.put(e.getEndPoint(), false);
+			}
+			for (AbEdge e : tmp) {
+				if (e.getStartPoint().edges.size() % 2 != 0) oddNodes.replace(e.getStartPoint(), true);
+				if (e.getEndPoint().edges.size() % 2 != 0) oddNodes.replace(e.getEndPoint(), true);
+			}
+			
+			// Perfect Match: lis‰t‰‰n kaaret, joilla parittomuus poistetaan
+			for (Map.Entry<AbVertex, Boolean> b : oddNodes.entrySet()) {
+				if (b.getValue() == true) {
+					// lis‰t‰‰n t‰ydennyskaari; valitaan sellainen kaari, joka
+					// on jo verkossa ja mahdollisimman lyhyt (molempien kaaren p‰iden oltava odd)
+					AbVertex v = b.getKey();
+					AbEdge min = v.edges.getFirst();
+					for (AbEdge e : v.edges)
+						if (e.getWeight() < min.getWeight() && e.getEndPoint().edges.size() % 2 != 0) min = e;
+					tmp.add(v.addEdge(min.getEndPoint(), min.getWeight()));
+					System.out.println(tmp.size());
+				}
+			}
+			
 		}
 
 		private boolean tarkistaK(String t1, String t2) {
@@ -101,15 +165,19 @@ public class Christofides extends JFrame {
 				t.setText("Sama l‰htˆ-/p‰‰tekaupunki");
 				return false;
 			}
+			boolean tmp1 = false;
+			boolean tmp2 = false;
 			for (AbVertex v : g.vertices()) {
 				if (v.getLabel().equals(t1)) {
-					t.setText(t1 + " on jo verkossa");
-					return false;
+					tmp1 = true;
 				}
 				if (v.getLabel().equals(t2)) {
-					t.setText(t2 + " on jo verkossa");
-					return false;
+					tmp2 = true;
 				}
+			}
+			if (tmp1 && tmp2) {
+				t.setText("T‰m‰ tieto on jo lis‰tty.");
+				return false;
 			}
 			
 			return true;
@@ -121,11 +189,7 @@ public class Christofides extends JFrame {
 			p.addEdge(q, dist);
 			q.addEdge(p, dist);
 			t.setText(t1 + " ja " + t2 + " lis‰tty");
-		}
-
-		@Override
-		public LinkedList<AbEdge> MSTKruskal(AbGraph g) {
-			return this.MSTKruskal(g);
+			System.out.println(g.size());
 		}
 		
 	}

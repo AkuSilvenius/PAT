@@ -4,6 +4,7 @@ import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.Map;
@@ -82,8 +83,7 @@ public class Christofides extends JFrame {
 					int dist = Integer.parseInt(matka.getText());
 					String t1 = k1.getText().toLowerCase();
 					String t2 = k2.getText().toLowerCase();
-					if (tarkistaK(t1,t2))
-						lisaaTiedot(dist,t1,t2);
+					tarkistaK(dist,t1,t2);
 				} catch (NumberFormatException n) {
 					t.setText("Virheellinen matka");
 				}
@@ -92,9 +92,10 @@ public class Christofides extends JFrame {
 			if (e.getSource() == christo) {
 				t.setText("Lasketaan...");
 				LinkedList<AbEdge> a = christofides(g);
-				System.out.println(a.size());
+//				System.out.println(a.size());
 				Object opt[] = {"Sulje"};
 				String viesti = tulosviesti(a); 
+				System.out.println(viesti);
 				JOptionPane.showOptionDialog(
 						null,
 						viesti,
@@ -112,17 +113,19 @@ public class Christofides extends JFrame {
 		private String tulosviesti(LinkedList<AbEdge> a) {
 			String tmp = "Kauppamatkaajan reitti:\n";
 			String s = a.getFirst().getStartPoint().getLabel() + "->";
-			tmp.concat(s);
+			
+			tmp = tmp +s;
+			System.out.println("s"+tmp);
 			for (AbEdge e : a) {
 				s = e.getEndPoint().getLabel() + "->";
-				tmp.concat(s);
+				tmp = tmp +s;
 			}
 			return tmp;
 		}
 
 		private LinkedList<AbEdge> christofides(AbGraph g) {
 			LinkedList<AbEdge> tmp = MSTKruskal(g);
-			System.out.println(tmp.size());
+//			System.out.println(tmp.size());
 			EulerTour(tmp);
 			Shortcuts(tmp);
 			return tmp;
@@ -154,42 +157,62 @@ public class Christofides extends JFrame {
 					for (AbEdge e : v.edges)
 						if (e.getWeight() < min.getWeight() && e.getEndPoint().edges.size() % 2 != 0) min = e;
 					tmp.add(v.addEdge(g, min.getEndPoint(), min.getWeight()));
-					System.out.println(tmp.size());
+//					System.out.println(tmp.size());
 				}
 			}
 			
 		}
+		
+		public void tarkistaK(float dist, String t1, String t2) {
 
-		private boolean tarkistaK(String t1, String t2) {
 			if (t1.equals(t2)) {
 				t.setText("Sama lähtö-/päätekaupunki");
-				return false;
+				return;
 			}
-			boolean tmp1 = false;
-			boolean tmp2 = false;
+
+			boolean a = false;
+			boolean b = false;
+			AbVertex vx = null;
+			AbVertex ve = null;
 			for (AbVertex v : g.vertices()) {
 				if (v.getLabel().equals(t1)) {
-					tmp1 = true;
+					a = true;
+					vx = v;
 				}
 				if (v.getLabel().equals(t2)) {
-					tmp2 = true;
+					b = true;
+					ve = v;
 				}
 			}
-			if (tmp1 && tmp2) {
-				t.setText("Tämä tieto on jo lisätty.");
-				return false;
-			}
 			
-			return true;
-		}
+			if (a && b) {
+				if (vx.isAdjacent(ve)) {
+					t.setText("Tämä tieto on jo lisätty.");
+					return;
+				}
+				ve.addEdge(g, vx, dist);
+				vx.addEdge(g, ve, dist);
 
-		private void lisaaTiedot(float dist, String t1, String t2) {
-			AbVertex p = g.addVertex(g, t1);
-			AbVertex q = g.addVertex(g, t2);
-			p.addEdge(g, q, dist);
-			q.addEdge(g, p, dist);
-			t.setText(t1 + " ja " + t2 + " lisätty");
-			System.out.println(g.size());
+			} else if (a) {
+				ve = g.addVertex(g, t2);
+				ve.addEdge(g, vx, dist);
+				vx.addEdge(g, ve, dist);
+				t.setText("Tiedot lisätty.");
+			} else if (b) {
+				vx = g.addVertex(g, t1);
+				vx.addEdge(g, ve, dist);
+				ve.addEdge(g, vx, dist);
+				t.setText("Tiedot lisätty.");
+			} else {
+				ve = g.addVertex(g, t2);
+				vx = g.addVertex(g, t1);
+				ve.addEdge(g, vx, dist);
+				vx.addEdge(g, ve, dist);
+				t.setText("Tiedot lisätty.");
+			}
+
+			System.out.println("g.size"+g.size());
+
 		}
 		
 	}

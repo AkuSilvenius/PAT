@@ -13,6 +13,7 @@ public abstract class AbKruskal implements HS_in.Kruskal {
 		LinkedList<AbEdge> mst = new LinkedList<AbEdge>();
 		PriorityQueue<AbEdge> Q = new PriorityQueue<AbEdge>();
 
+		if (g.vlist.size() == 0 || g.elist.size() == 0) return mst;
 		for (AbEdge e : g.abEdges()) Q.add(e);
 
 		AbMFSet M = new AbMFSet(g);

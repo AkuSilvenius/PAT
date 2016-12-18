@@ -131,7 +131,7 @@ public interface Vertex {
 	 * 
 	 * @author Teemu Holttinen
 	 */
-	Iterable<AbEdge> abEdges();
+	Iterable<AbEdge> edges();
 
 	/**
 	 * Palauttaa iteraattorin solmusta lähtevistä kaarista

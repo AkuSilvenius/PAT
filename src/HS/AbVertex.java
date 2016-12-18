@@ -59,32 +59,36 @@ public class AbVertex extends Object implements Comparable<Object>, Iterable<AbE
 	}
 
 
-	public AbEdge addEdge(AbVertex v) {
+	public AbEdge addEdge(AbGraph g, AbVertex v) {
 		AbEdge tmp = new AbEdge(v);
 		tmp.startPoint = this;
 		this.edges.add(tmp);
+		g.elist.add(tmp);
 		return tmp;
 	}
 
-	public AbEdge addEdge(AbVertex v, float w) {
+	public AbEdge addEdge(AbGraph g, AbVertex v, float w) {
 		AbEdge tmp = new AbEdge(v, w);
 		tmp.startPoint = this;
 		this.edges.add(tmp);
+		g.elist.add(tmp);
 		return tmp;
 	}
 
 	
-	public AbEdge addEdge(AbVertex v, int clr) {
+	public AbEdge addEdge(AbGraph g, AbVertex v, int clr) {
 		AbEdge tmp = new AbEdge(v, clr);
 		tmp.startPoint = this;
 		this.edges.add(tmp);
+		g.elist.add(tmp);
 		return tmp;
 	}
 
-	public AbEdge addEdge(AbVertex v, float w, int clr) {
+	public AbEdge addEdge(AbGraph g, AbVertex v, float w, int clr) {
 		AbEdge tmp = new AbEdge(v, w, clr);
 		tmp.startPoint = this;
 		this.edges.add(tmp);
+		g.elist.add(tmp);
 		return tmp;
 	}
 	

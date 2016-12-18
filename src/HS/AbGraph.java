@@ -13,25 +13,25 @@ public class AbGraph extends Object implements Iterable<AbVertex>, HS_in.Graph {
 		this.elist = new LinkedList<AbEdge>();
 	}
 	
-	public AbVertex addVertex() {
+	public AbVertex addVertex(AbGraph g) {
 		AbVertex tmp = new AbVertex();
 		this.vlist.add(tmp);
 		return tmp;
 	}
 	
-	public AbVertex addVertex(int clr) {
+	public AbVertex addVertex(AbGraph g, int clr) {
 		AbVertex tmp = new AbVertex(clr);
 		this.vlist.add(tmp);
 		return tmp;
 	}
 	
-	public AbVertex addVertex(String label) { 
+	public AbVertex addVertex(AbGraph g, String label) { 
 		AbVertex tmp = new AbVertex(label);
 		this.vlist.add(tmp);
 		return tmp;
 	}
 	
-	public AbVertex addVertex(int clr, String label) {
+	public AbVertex addVertex(AbGraph g, int clr, String label) {
 		AbVertex tmp = new AbVertex(clr,label);
 		this.vlist.add(tmp);
 		return tmp;

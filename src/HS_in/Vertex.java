@@ -2,6 +2,7 @@ package HS_in;
 
 import java.util.Iterator;
 import HS.AbEdge;
+import HS.AbGraph;
 import HS.AbVertex;
 
 //attribuutit:
@@ -60,7 +61,7 @@ public interface Vertex {
 	 * 
 	 * @author Teemu Holttinen
 	 */
-	AbEdge addEdge(AbVertex v);
+	AbEdge addEdge(AbGraph g, AbVertex v);
 
 	/**
 	 * Lis‰‰ kaaren t‰m‰n solmun ja m‰‰ritetyn solmun v‰lille lis‰tiedoilla
@@ -70,7 +71,7 @@ public interface Vertex {
 	 * 
 	 * @author Teemu Holttinen
 	 */
-	AbEdge addEdge(AbVertex v, float w);
+	AbEdge addEdge(AbGraph g, AbVertex v, float w);
 
 	/**
 	 * Lis‰‰ kaaren t‰m‰n solmun ja m‰‰ritetyn solmun v‰lille lis‰tiedoilla
@@ -80,7 +81,7 @@ public interface Vertex {
 	 * 
 	 * @author Teemu Holttinen
 	 */
-	AbEdge addEdge(AbVertex v, int clr);
+	AbEdge addEdge(AbGraph g, AbVertex v, int clr);
 
 	/**
 	 * Lis‰‰ kaaren t‰m‰n solmun ja m‰‰ritetyn solmun v‰lille lis‰tiedoilla
@@ -91,7 +92,7 @@ public interface Vertex {
 	 * 
 	 * @author Teemu Holttinen
 	 */
-	AbEdge addEdge(AbVertex v, float w, int clr);
+	AbEdge addEdge(AbGraph g, AbVertex v, float w, int clr);
 
 	/**
 	 * Poistaa m‰‰ritellyn kaaren t‰st‰ solmusta

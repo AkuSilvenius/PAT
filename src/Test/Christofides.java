@@ -153,7 +153,7 @@ public class Christofides extends JFrame {
 					AbEdge min = v.edges.getFirst();
 					for (AbEdge e : v.edges)
 						if (e.getWeight() < min.getWeight() && e.getEndPoint().edges.size() % 2 != 0) min = e;
-					tmp.add(v.addEdge(min.getEndPoint(), min.getWeight()));
+					tmp.add(v.addEdge(g, min.getEndPoint(), min.getWeight()));
 					System.out.println(tmp.size());
 				}
 			}
@@ -184,10 +184,10 @@ public class Christofides extends JFrame {
 		}
 
 		private void lisaaTiedot(float dist, String t1, String t2) {
-			AbVertex p = g.addVertex(t1);
-			AbVertex q = g.addVertex(t2);
-			p.addEdge(q, dist);
-			q.addEdge(p, dist);
+			AbVertex p = g.addVertex(g, t1);
+			AbVertex q = g.addVertex(g, t2);
+			p.addEdge(g, q, dist);
+			q.addEdge(g, p, dist);
 			t.setText(t1 + " ja " + t2 + " lisätty");
 			System.out.println(g.size());
 		}

@@ -2,6 +2,7 @@ package HS_in;
 
 import java.util.Iterator;
 import HS.AbEdge;
+import HS.AbGraph;
 import HS.AbVertex;
 
 //attribuutit:
@@ -21,7 +22,7 @@ public interface Graph {
 	 * 
 	 * @author Aku Silvenius
 	 */
-	AbVertex addVertex();
+	AbVertex addVertex(AbGraph g);
 	
 	/**
 	 * Lis‰‰ verkkoon uuden solmun tarkennetuilla parametreilla.
@@ -30,7 +31,7 @@ public interface Graph {
 	 * 
 	 * @author Aku Silvenius
 	 */
-	AbVertex addVertex(int clr);
+	AbVertex addVertex(AbGraph g, int clr);
 	
 	/**
 	 * Lis‰‰ verkkoon uuden solmun tarkennetuilla parametreilla.
@@ -39,7 +40,7 @@ public interface Graph {
 	 * 
 	 * @author Aku Silvenius
 	 */
-	AbVertex addVertex(String label);
+	AbVertex addVertex(AbGraph g, String label);
 	
 	/**
 	 * Lis‰‰ verkkoon uuden solmun tarkennetuilla parametreilla.
@@ -49,7 +50,7 @@ public interface Graph {
 	 * 
 	 * @author Aku Silvenius
 	 */
-	AbVertex addVertex(int clr, String label);
+	AbVertex addVertex(AbGraph g, int clr, String label);
 	
 	/**
 	 * Palauttaa verkon solmujen lukum‰‰r‰n.

@@ -26,6 +26,7 @@ public class Christofides extends JFrame {
 	JTextField matka;
 	
 	JButton lisaa;
+	JButton tyh;
 	JButton christo;
 	
 	Kuuntelija k;
@@ -44,21 +45,22 @@ public class Christofides extends JFrame {
 		k = new Kuuntelija();
 		t = new JLabel("Tila");
 		
-		k1 = new JTextField();
-		k1.setText("Lähtökaupunki");
-		k2 = new JTextField();
-		k2.setText("Päätekaupunki");
-		matka = new JTextField();
-		matka.setText("Välimatka (km)");
+		k1 = new JTextField("",10);
+		k2 = new JTextField("",10);
+		matka = new JTextField("",10);
+		
 		lisaa = new JButton("Lisää");
 		lisaa.addActionListener(k);
-		christo = new JButton("Laske Christofides");
+		christo = new JButton("Laske Kruskal");
 		christo.addActionListener(k);
+		tyh = new JButton("Tyhjennä kaikki");
+		tyh.addActionListener(k);
 		
 		ylapan.add(k1, BorderLayout.LINE_START);
 		ylapan.add(matka, BorderLayout.CENTER);
 		ylapan.add(k2, BorderLayout.LINE_END);
 		ylapan.add(lisaa, BorderLayout.PAGE_END);
+		ylapan.add(tyh, BorderLayout.PAGE_START);
 		alapan.add(christo, BorderLayout.PAGE_START);
 		alapan.add(t, BorderLayout.PAGE_END);
 		
@@ -78,6 +80,11 @@ public class Christofides extends JFrame {
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
+			if (e.getSource() == tyh) {
+				k1.setText("");
+				k2.setText("");
+				matka.setText("");
+			}
 			if (e.getSource() == lisaa) {
 				try {
 					int dist = Integer.parseInt(matka.getText());
@@ -94,7 +101,8 @@ public class Christofides extends JFrame {
 				LinkedList<AbEdge> a = christofides(g);
 //				System.out.println(a.size());
 				Object opt[] = {"Sulje"};
-				String viesti = tulosviesti(a); 
+				String viesti = tulosviesti(a);
+				
 				System.out.println(viesti);
 				JOptionPane.showOptionDialog(
 						null,
@@ -111,14 +119,15 @@ public class Christofides extends JFrame {
 		}
 
 		private String tulosviesti(LinkedList<AbEdge> a) {
+			System.out.println(a);
 			String tmp = "Kauppamatkaajan reitti:\n";
-			String s = a.getFirst().getStartPoint().getLabel() + "->";
+//			String s = a.getFirst().getStartPoint().getLabel() + "->" + a.getFirst().getEndPoint().getLabel()+"|";
 			
-			tmp = tmp +s;
-			System.out.println("s"+tmp);
+//			tmp += s;
+			String s;
 			for (AbEdge e : a) {
-				s = e.getEndPoint().getLabel() + "->";
-				tmp = tmp +s;
+				s = e.getEndPoint().getLabel() + " "+e.getWeight()+" " + e.getStartPoint().getLabel()+"|";
+				tmp += s;
 			}
 			return tmp;
 		}
@@ -126,8 +135,8 @@ public class Christofides extends JFrame {
 		private LinkedList<AbEdge> christofides(AbGraph g) {
 			LinkedList<AbEdge> tmp = MSTKruskal(g);
 //			System.out.println(tmp.size());
-			EulerTour(tmp);
-			Shortcuts(tmp);
+			//EulerTour(tmp);
+			//Shortcuts(tmp);
 			return tmp;
 		}
 
@@ -191,23 +200,23 @@ public class Christofides extends JFrame {
 					return;
 				}
 				ve.addEdge(g, vx, dist);
-				vx.addEdge(g, ve, dist);
+				//vx.addEdge(g, ve, dist);
 
 			} else if (a) {
 				ve = g.addVertex(g, t2);
 				ve.addEdge(g, vx, dist);
-				vx.addEdge(g, ve, dist);
+				//vx.addEdge(g, ve, dist);
 				t.setText("Tiedot lisätty.");
 			} else if (b) {
 				vx = g.addVertex(g, t1);
 				vx.addEdge(g, ve, dist);
-				ve.addEdge(g, vx, dist);
+				//ve.addEdge(g, vx, dist);
 				t.setText("Tiedot lisätty.");
 			} else {
 				ve = g.addVertex(g, t2);
 				vx = g.addVertex(g, t1);
 				ve.addEdge(g, vx, dist);
-				vx.addEdge(g, ve, dist);
+				//vx.addEdge(g, ve, dist);
 				t.setText("Tiedot lisätty.");
 			}
 

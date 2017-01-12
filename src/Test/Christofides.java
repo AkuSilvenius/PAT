@@ -98,8 +98,7 @@ public class Christofides extends JFrame {
 
 			if (e.getSource() == kruskal) {
 				t.setText("Lasketaan...");
-				LinkedList<AbEdge> a = christofides(g);
-//				System.out.println(a.size());
+				LinkedList<AbEdge> a = MST(g);
 				Object opt[] = {"Sulje"};
 				String viesti = tulosviesti(a);
 
@@ -121,9 +120,6 @@ public class Christofides extends JFrame {
 		private String tulosviesti(LinkedList<AbEdge> a) {
 			System.out.println(a);
 			String tmp = "Kauppamatkaajan reitti:\n";
-//			String s = a.getFirst().getStartPoint().getLabel() + "->" + a.getFirst().getEndPoint().getLabel()+"|";
-
-//			tmp += s;
 			String s;
 			for (AbEdge e : a) {
 				s = e.getEndPoint().getLabel() + " "+e.getWeight()+" " + e.getStartPoint().getLabel()+"|";
@@ -132,44 +128,9 @@ public class Christofides extends JFrame {
 			return tmp;
 		}
 
-		private LinkedList<AbEdge> christofides(AbGraph g) {
+		private LinkedList<AbEdge> MST(AbGraph g) {
 			LinkedList<AbEdge> tmp = MSTKruskal(g);
-//			System.out.println(tmp.size());
-			//EulerTour(tmp);
-			//Shortcuts(tmp);
 			return tmp;
-		}
-
-		private void Shortcuts(LinkedList<AbEdge> tmp) {
-
-		}
-
-		private void EulerTour(LinkedList<AbEdge> tmp) {
-			HashMap<AbVertex, Boolean> oddNodes = new HashMap<AbVertex, Boolean>();
-			// OddNodes: etsit‰‰n solmut, joilla pariton m‰‰r‰ kaaria
-			for (AbEdge e : tmp) {
-				oddNodes.put(e.getStartPoint(), false);
-				oddNodes.put(e.getEndPoint(), false);
-			}
-			for (AbEdge e : tmp) {
-				if (e.getStartPoint().edges.size() % 2 != 0) oddNodes.replace(e.getStartPoint(), true);
-				if (e.getEndPoint().edges.size() % 2 != 0) oddNodes.replace(e.getEndPoint(), true);
-			}
-
-			// Perfect Match: lis‰t‰‰n kaaret, joilla parittomuus poistetaan
-			for (Map.Entry<AbVertex, Boolean> b : oddNodes.entrySet()) {
-				if (b.getValue() == true) {
-					// lis‰t‰‰n t‰ydennyskaari; valitaan sellainen kaari, joka
-					// on jo verkossa ja mahdollisimman lyhyt (molempien kaaren p‰iden oltava odd)
-					AbVertex v = b.getKey();
-					AbEdge min = v.edges.getFirst();
-					for (AbEdge e : v.edges)
-						if (e.getWeight() < min.getWeight() && e.getEndPoint().edges.size() % 2 != 0) min = e;
-					tmp.add(v.addEdge(g, min.getEndPoint(), min.getWeight()));
-//					System.out.println(tmp.size());
-				}
-			}
-
 		}
 
 		public void tarkistaK(float dist, String t1, String t2) {

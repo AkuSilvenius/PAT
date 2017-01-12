@@ -28,6 +28,7 @@ public class Christofides extends JFrame {
 	JButton lisaa;
 	JButton tyh;
 	JButton kruskal;
+	JButton tulostus;
 
 	Kuuntelija k;
 
@@ -55,6 +56,8 @@ public class Christofides extends JFrame {
 		kruskal.addActionListener(k);
 		tyh = new JButton("Tyhjennä kaikki");
 		tyh.addActionListener(k);
+		tulostus = new JButton("Tulosta verkko");
+		tulostus.addActionListener(k);
 
 		ylapan.add(k1, BorderLayout.LINE_START);
 		ylapan.add(matka, BorderLayout.CENTER);
@@ -62,6 +65,7 @@ public class Christofides extends JFrame {
 		ylapan.add(lisaa, BorderLayout.PAGE_END);
 		ylapan.add(tyh, BorderLayout.PAGE_START);
 		alapan.add(kruskal, BorderLayout.PAGE_START);
+		alapan.add(tulostus, BorderLayout.CENTER);
 		alapan.add(t, BorderLayout.PAGE_END);
 
 		this.add(Box.createRigidArea(new Dimension(0, 1)));
@@ -80,6 +84,7 @@ public class Christofides extends JFrame {
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
+			if (e.getSource() == tulostus) tulosta(g);
 			if (e.getSource() == tyh) {
 				k1.setText("");
 				k2.setText("");
@@ -135,6 +140,10 @@ public class Christofides extends JFrame {
 
 		public void tarkistaK(float dist, String t1, String t2) {
 
+			if (t1.length() == 0 || t2.length() == 0) {
+				t.setText("Tyhjä syöte.");
+				return;
+			}
 			if (t1.equals(t2)) {
 				t.setText("Sama lähtö-/päätekaupunki");
 				return;
@@ -157,32 +166,48 @@ public class Christofides extends JFrame {
 
 			if (a && b) {
 				if (vx.isAdjacent(ve)) {
-					t.setText("Tämä tieto on jo lisätty.");
+					t.setText("Välillä " + vx.getLabel() + "-" + ve.getLabel() + " on jo yhteys.");
 					return;
+				} else {
+					ve.addEdge(g, vx, dist);
+					vx.addEdge(g, ve, dist);
+					t.setText("Lisättiin " + ve.getLabel() + " <-(" + dist + ")-> " + vx.getLabel());
 				}
-				ve.addEdge(g, vx, dist);
-				//vx.addEdge(g, ve, dist);
 
 			} else if (a) {
 				ve = g.addVertex(g, t2);
 				ve.addEdge(g, vx, dist);
-				//vx.addEdge(g, ve, dist);
-				t.setText("Tiedot lisätty.");
+				vx.addEdge(g, ve, dist);
+				t.setText("Lisättiin " + ve.getLabel() + " <-(" + dist + ")-> " + vx.getLabel());
 			} else if (b) {
 				vx = g.addVertex(g, t1);
 				vx.addEdge(g, ve, dist);
-				//ve.addEdge(g, vx, dist);
-				t.setText("Tiedot lisätty.");
+				ve.addEdge(g, vx, dist);
+				t.setText("Lisättiin " + vx.getLabel() + " <-(" + dist + ")-> " + ve.getLabel());
 			} else {
 				ve = g.addVertex(g, t2);
 				vx = g.addVertex(g, t1);
 				ve.addEdge(g, vx, dist);
-				//vx.addEdge(g, ve, dist);
-				t.setText("Tiedot lisätty.");
+				vx.addEdge(g, ve, dist);
+				t.setText("Lisättiin " + ve.getLabel() + " <-(" + dist + ")-> " + vx.getLabel());
 			}
 
-			System.out.println("g.size"+g.size());
+			System.out.println("g.size: "+g.size());
 
+		}
+
+		public void tulosta(AbGraph g) {
+			System.out.println("VERKON TULOSTUS");
+			for (AbVertex v : g.vertices()) {
+				System.out.print("[" + v.getLabel() + "]: ");
+				for (AbEdge e : v.edges()) {
+					System.out.print("[(" + e.getWeight() + ") " + e.getEndPoint().getLabel() + "]; ");
+				}
+				System.out.print("\n");
+			}
+			System.out.println("----------");
+			System.out.println();
+			t.setText("Verkko tulostettu konsoliin.");
 		}
 
 	}

@@ -106,8 +106,8 @@ public class Christofides extends JFrame {
 				LinkedList<AbEdge> a = MST(g);
 				Object opt[] = {"Sulje"};
 				String viesti = tulosviesti(a);
+				t.setText("Kruskal laskettu");
 
-				System.out.println(viesti);
 				JOptionPane.showOptionDialog(
 						null,
 						viesti,
@@ -117,14 +117,13 @@ public class Christofides extends JFrame {
 						null,
 						opt,
 						opt[0]);
-				t.setText("Tila");
 
 			}
 		}
 
 		private String tulosviesti(LinkedList<AbEdge> a) {
 			System.out.println(a);
-			String tmp = "Kauppamatkaajan reitti:\n";
+			String tmp = "MST:\n";
 			String s;
 			for (AbEdge e : a) {
 				s = e.getEndPoint().getLabel() + " "+e.getWeight()+" " + e.getStartPoint().getLabel()+"|";

@@ -1,6 +1,7 @@
 package HS_in;
 
 import HS.AbVertex;
+import HS.AbEdge;
 
 //attribuutit:
 //Vertex startPoint;
@@ -18,7 +19,7 @@ public interface Edge {
 	/**
 	 * Kaaren painon määrittäminen
 	 * @param w - kaaren paino
-	 * 
+	 *
 	 * @author Teemu Holttinen
 	 */
 	void setWeight(int w);
@@ -26,7 +27,7 @@ public interface Edge {
 	/**
 	 * Kaaren värin määrittäminen
 	 * @param clr - väri
-	 * 
+	 *
 	 * @author Teemu Holttinen
 	 */
 	void setColor(int clr);
@@ -35,7 +36,7 @@ public interface Edge {
 	 * Palauttaa totuusarvon onko solmu v kaaren lähtösolmu
 	 * @param v - Tarkasteltava solmu
 	 * @return boolean
-	 * 
+	 *
 	 * @author Teemu Holttinen
 	 */
 	boolean goesOut(AbVertex v);
@@ -43,7 +44,7 @@ public interface Edge {
 	/**
 	 * Palauttaa kaaren painon
 	 * @return kaaren paino
-	 * 
+	 *
 	 * @author Teemu Holttinen
 	 */
 	float getWeight();
@@ -51,7 +52,7 @@ public interface Edge {
 	/**
 	 * Palauttaa kaaren loppusolmun
 	 * @return kaaren loppusolmu
-	 * 
+	 *
 	 * @author Teemu Holttinen
 	 */
 	AbVertex getEndPoint();
@@ -60,7 +61,7 @@ public interface Edge {
 	 * Palauttaa kaaren loppusolmun tai null, jos kaarta ei ole
 	 * @param Vertex v
 	 * @return Loppusolmu tai null, jos kaarta ei ole
-	 * 
+	 *
 	 * @author Teemu Holttinen
 	 */
 	AbVertex getEndPoint(AbVertex v);
@@ -68,18 +69,18 @@ public interface Edge {
 	/**
 	 * Palauttaa kaaren lähtösomun
 	 * @return Kaaren lähtösolmu
-	 * 
+	 *
 	 * @author Teemu Holttinen
 	 */
 	AbVertex getStartPoint();
 
 	/**
 	 * compareTo -metodi kaarten vertaamiseen
-	 * @param o - määritelty olio
+	 * @param e - vertailun kohteena oleva kaari
 	 * @return int
-	 * 
+	 *
 	 * @author Teemu Holttinen
 	 */
-	int compareTo(Object o);
+	int compareTo(AbEdge e);
 
 }

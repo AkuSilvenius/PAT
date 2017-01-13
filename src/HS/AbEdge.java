@@ -2,7 +2,7 @@ package HS;
 
 import HS_in.Edge;
 
-public class AbEdge extends Object implements Comparable<Object>, Edge {
+public class AbEdge extends Object implements Comparable<AbEdge>, Edge {
 
 	AbVertex startPoint;
 	AbVertex endPoint;
@@ -43,21 +43,21 @@ public class AbEdge extends Object implements Comparable<Object>, Edge {
 		this.weight = Float.NaN;
 		this.color = HSCol.NaN;
 	}
-	
+
 	public AbEdge(AbVertex endpoint, float w, int clr) {
 		this.startPoint = null;
 		this.endPoint = endpoint;
 		this.weight = w;
 		this.color = clr;
 	}
-	
+
 	public AbEdge(AbVertex endpoint, String label, int clr) {
 		this.startPoint = null;
 		this.endPoint = endpoint;
 		this.weight = Float.NaN;
 		this.color = clr;
 	}
-	
+
 	public AbEdge(AbVertex endpoint, String label, int clr, float w) {
 		this.startPoint = null;
 		this.endPoint = endpoint;
@@ -69,14 +69,14 @@ public class AbEdge extends Object implements Comparable<Object>, Edge {
 		this.weight = w;
 	}
 
-	
+
 	public void setColor(int clr) {
 		this.color = clr;
 	}
-	
+
 	public boolean goesOut(AbVertex v){
 		if(this.getStartPoint().equals(v)) return true;
-		
+
 		return false;
 	}
 
@@ -87,7 +87,7 @@ public class AbEdge extends Object implements Comparable<Object>, Edge {
 	public AbVertex getEndPoint() {
 		return this.endPoint;
 	}
-	
+
 	public AbVertex getEndPoint(AbVertex v) {
 		if (!v.equals(this.startPoint)) return null;
 		if (v.equals(this.startPoint)) return this.endPoint;
@@ -98,8 +98,9 @@ public class AbEdge extends Object implements Comparable<Object>, Edge {
 		return this.startPoint;
 	}
 
-	public int compareTo(Object o) {
-		return this.compareTo(o);
+	@Override
+	public int compareTo(AbEdge e) {
+		return Float.compare(this.getWeight(), e.getWeight());
 	}
 
 }

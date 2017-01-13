@@ -6,28 +6,26 @@ import java.util.PriorityQueue;
 import HS.AbTree.AbNode;
 
 public abstract class AbKruskal implements HS_in.Kruskal {
-	
+
 	public LinkedList<AbEdge> MSTKruskal(AbGraph g) {
-		
-		HashMap<AbVertex,AbNode> map = new HashMap<AbVertex,AbNode>(); // findSet()-operaation avuksi while-loopin sisällä
+
+		HashMap<AbVertex,AbNode> map = new HashMap<AbVertex,AbNode>(); // findSet()-operaation avuksi while-loopin sisï¿½llï¿½
 		LinkedList<AbEdge> mst = new LinkedList<AbEdge>();
 		PriorityQueue<AbEdge> Q = new PriorityQueue<AbEdge>();
-		System.out.println("vlist: "+g.vlist+" elist "+g.elist);
-		
-		
+
+
 		if (g.vlist.size() == 0 || g.elist.size() == 0) return mst;
-		
+
 		for (AbEdge e : g.abEdges()){
 			Q.add(e);
 		};
-		
+
 		AbMFSet M = new AbMFSet(g);
 		for (AbTree t : M.forest) map.put(t.root.element, t.root);
 
 		int i = g.size();
-		
+
 		while(i > 1) {
-			System.out.println("Tuli while");
 			AbEdge e = Q.poll();
 			AbNode s1 = M.findSet(map.get(e.getEndPoint()));
 			AbNode s2 = M.findSet(map.get(e.getStartPoint()));
@@ -40,5 +38,5 @@ public abstract class AbKruskal implements HS_in.Kruskal {
 
 		return mst;
 	}
-	
+
 }

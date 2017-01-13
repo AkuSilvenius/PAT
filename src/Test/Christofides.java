@@ -122,11 +122,10 @@ public class Christofides extends JFrame {
 		}
 
 		private String tulosviesti(LinkedList<AbEdge> a) {
-			System.out.println(a);
 			String tmp = "MST:\n";
 			String s;
 			for (AbEdge e : a) {
-				s = e.getEndPoint().getLabel() + " "+e.getWeight()+" " + e.getStartPoint().getLabel()+"|";
+				s = e.getStartPoint().getLabel() + " "+e.getWeight()+" " + e.getEndPoint().getLabel()+"|";
 				tmp += s;
 			}
 			return tmp;

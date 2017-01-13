@@ -125,8 +125,8 @@ public class Christofides extends JFrame {
 			String tmp = "MST:\n";
 			String s;
 			for (AbEdge e : a) {
-				s = e.getStartPoint().getLabel() + " "+e.getWeight()+" " + e.getEndPoint().getLabel()+"|";
-				tmp += s;
+				s = e.getStartPoint().getLabel() + "--{ " + e.getWeight() + " }--" + e.getEndPoint().getLabel();
+				tmp += s + "\n";
 			}
 			return tmp;
 		}

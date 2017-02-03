@@ -50,11 +50,11 @@ public class GraphTest extends JFrame {
 		k2 = new JTextField("",10);
 		matka = new JTextField("",10);
 
-		lisaa = new JButton("Lisï¿½ï¿½");
+		lisaa = new JButton("Lisää");
 		lisaa.addActionListener(k);
 		kruskal = new JButton("Laske Kruskal");
 		kruskal.addActionListener(k);
-		tyh = new JButton("Tyhjennï¿½ kaikki");
+		tyh = new JButton("Tyhjennä kaikki");
 		tyh.addActionListener(k);
 		tulostus = new JButton("Tulosta verkko");
 		tulostus.addActionListener(k);
@@ -139,11 +139,11 @@ public class GraphTest extends JFrame {
 		public void tarkistaK(float dist, String t1, String t2) {
 
 			if (t1.length() == 0 || t2.length() == 0) {
-				t.setText("Tyhjï¿½ syï¿½te.");
+				t.setText("Tyhjä syöte.");
 				return;
 			}
 			if (t1.equals(t2)) {
-				t.setText("Sama lï¿½htï¿½-/pï¿½ï¿½tekaupunki");
+				t.setText("Sama lähtö-/päätekaupunki");
 				return;
 			}
 
@@ -164,30 +164,30 @@ public class GraphTest extends JFrame {
 
 			if (a && b) {
 				if (vx.isAdjacent(ve)) {
-					t.setText("Vï¿½lillï¿½ " + vx.getLabel() + "-" + ve.getLabel() + " on jo yhteys.");
+					t.setText("Välillä " + vx.getLabel() + "-" + ve.getLabel() + " on jo yhteys.");
 					return;
 				} else {
 					ve.addEdge(g, vx, dist);
 					vx.addEdge(g, ve, dist);
-					t.setText("Lisï¿½ttiin " + ve.getLabel() + " <-(" + dist + ")-> " + vx.getLabel());
+					t.setText("Lisättiin " + ve.getLabel() + " <-(" + dist + ")-> " + vx.getLabel());
 				}
 
 			} else if (a) {
 				ve = g.addVertex(g, t2);
 				ve.addEdge(g, vx, dist);
 				vx.addEdge(g, ve, dist);
-				t.setText("Lisï¿½ttiin " + ve.getLabel() + " <-(" + dist + ")-> " + vx.getLabel());
+				t.setText("Lisättiin " + ve.getLabel() + " <-(" + dist + ")-> " + vx.getLabel());
 			} else if (b) {
 				vx = g.addVertex(g, t1);
 				vx.addEdge(g, ve, dist);
 				ve.addEdge(g, vx, dist);
-				t.setText("Lisï¿½ttiin " + vx.getLabel() + " <-(" + dist + ")-> " + ve.getLabel());
+				t.setText("Lisättiin " + vx.getLabel() + " <-(" + dist + ")-> " + ve.getLabel());
 			} else {
 				ve = g.addVertex(g, t2);
 				vx = g.addVertex(g, t1);
 				ve.addEdge(g, vx, dist);
 				vx.addEdge(g, ve, dist);
-				t.setText("Lisï¿½ttiin " + ve.getLabel() + " <-(" + dist + ")-> " + vx.getLabel());
+				t.setText("Lisättiin " + ve.getLabel() + " <-(" + dist + ")-> " + vx.getLabel());
 			}
 
 			System.out.println("g.size: "+g.size());

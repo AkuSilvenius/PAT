@@ -4,6 +4,9 @@ import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -14,6 +17,8 @@ import HS.*;
 
 @SuppressWarnings("serial")
 public class GraphTest extends JFrame {
+
+	private final static String FILENAME = "";
 
 	AbGraph g;
 	JPanel ylapan;
@@ -33,22 +38,24 @@ public class GraphTest extends JFrame {
 	Kuuntelija k;
 
 	public GraphTest() {
-
+		
+		
+		
 		g = new AbGraph();
 
 		ylapan = new JPanel();
-		ylapan.setSize(400,150);
+		ylapan.setSize(400, 150);
 		ylapan.setLayout(new BorderLayout());
 		alapan = new JPanel();
-		alapan.setSize(400,50);
+		alapan.setSize(400, 50);
 		alapan.setLayout(new BorderLayout());
 
 		k = new Kuuntelija();
 		t = new JLabel("Tila");
 
-		k1 = new JTextField("",10);
-		k2 = new JTextField("",10);
-		matka = new JTextField("",10);
+		k1 = new JTextField("", 10);
+		k2 = new JTextField("", 10);
+		matka = new JTextField("", 10);
 
 		lisaa = new JButton("Lisää");
 		lisaa.addActionListener(k);
@@ -71,20 +78,22 @@ public class GraphTest extends JFrame {
 		this.add(Box.createRigidArea(new Dimension(0, 1)));
 		this.add(ylapan, BorderLayout.NORTH);
 		this.add(alapan, BorderLayout.SOUTH);
-		this.setSize(ylapan.getWidth(), ylapan.getHeight()+alapan.getHeight());
+		this.setSize(ylapan.getWidth(), ylapan.getHeight() + alapan.getHeight());
 
 		this.setTitle("Verkko");
 		this.setResizable(false);
 		this.setLocationRelativeTo(null);
 		this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		this.setVisible(true);
-	} //this
+		
+	} // this
 
 	public class Kuuntelija extends AbKruskal implements ActionListener {
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			if (e.getSource() == tulostus) tulosta(g);
+			if (e.getSource() == tulostus)
+				tulosta(g);
 			if (e.getSource() == tyh) {
 				k1.setText("");
 				k2.setText("");
@@ -95,7 +104,7 @@ public class GraphTest extends JFrame {
 					int dist = Integer.parseInt(matka.getText());
 					String t1 = k1.getText().toLowerCase();
 					String t2 = k2.getText().toLowerCase();
-					tarkistaK(dist,t1,t2);
+					tarkistaK(dist, t1, t2);
 				} catch (NumberFormatException n) {
 					t.setText("Virheellinen matka");
 				}
@@ -104,22 +113,15 @@ public class GraphTest extends JFrame {
 			if (e.getSource() == kruskal) {
 				t.setText("Lasketaan...");
 				LinkedList<AbEdge> a = MST(g);
-				Object opt[] = {"Sulje"};
+				Object opt[] = { "Sulje" };
 				String viesti = tulosviesti(a);
 				t.setText("Kruskal laskettu");
 
-				JOptionPane.showOptionDialog(
-						null,
-						viesti,
-						"GraphTest",
-						JOptionPane.INFORMATION_MESSAGE,
-						JOptionPane.PLAIN_MESSAGE,
-						null,
-						opt,
-						opt[0]);
+				JOptionPane.showOptionDialog(null, viesti, "GraphTest", JOptionPane.INFORMATION_MESSAGE,
+						JOptionPane.PLAIN_MESSAGE, null, opt, opt[0]);
 
 			}
-		} //actionPerformed
+		} // actionPerformed
 
 		private String tulosviesti(LinkedList<AbEdge> a) {
 			String tmp = "MST:\n";
@@ -190,9 +192,41 @@ public class GraphTest extends JFrame {
 				t.setText("Lisättiin " + ve.getLabel() + " <-(" + dist + ")-> " + vx.getLabel());
 			}
 
-			System.out.println("g.size: "+g.size());
+			System.out.println("g.size: " + g.size());
 
-		} //tarkistaK
+		} // tarkistaK
+
+		public void readFile(String filename) {
+
+			try (BufferedReader br = new BufferedReader(new FileReader(filename))) {
+
+				String rivi;
+				String lsolmu;
+				String psolmu;
+				float paino;
+
+				while ((rivi = br.readLine()) != null) {
+					
+					try {
+						lsolmu = rivi.split("-")[0];
+						paino = Float.parseFloat(rivi.split("-")[1]);
+						psolmu = rivi.split("-")[2];
+
+						System.out.println("Lähtösolmu " + lsolmu + " paino " + paino + " päätesolmu " + psolmu);
+
+						tarkistaK(paino, lsolmu, psolmu);
+						
+					} catch (NumberFormatException e) {
+						
+						e.printStackTrace();
+					}
+				}
+
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+
+		}
 
 		public void tulosta(AbGraph g) {
 			System.out.println("VERKON TULOSTUS");
@@ -206,12 +240,13 @@ public class GraphTest extends JFrame {
 			System.out.println("----------");
 			System.out.println();
 			t.setText("Verkko tulostettu konsoliin.");
-		} //tulosta
+		} // tulosta
 
-	} //Kuuntelija
+	} // Kuuntelija
 
-	public static void main(String [] args) {
+	public static void main(String[] args) {
+
 		new GraphTest();
 	}
 
-} //GraphTest
+} // GraphTest

@@ -39,9 +39,9 @@ public class GraphTest extends JFrame {
 	Kuuntelija k;
 
 	public GraphTest() {
-		
-		
-		
+
+
+
 		g = new AbGraph();
 
 		ylapan = new JPanel();
@@ -89,7 +89,7 @@ public class GraphTest extends JFrame {
 		this.setLocationRelativeTo(null);
 		this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		this.setVisible(true);
-		
+
 	} // this
 
 	public class Kuuntelija extends AbKruskal implements ActionListener {
@@ -100,7 +100,7 @@ public class GraphTest extends JFrame {
 			if (e.getSource() == tulostus) tulosta(g);
 			if (e.getSource() == tulostus)
 				tulosta(g);
-			
+
 			if (e.getSource() == tyh) {
 				k1.setText("");
 				k2.setText("");
@@ -215,7 +215,7 @@ public class GraphTest extends JFrame {
 		} // tarkistaK
 
 		public void readFile(String filename) {
-			
+
 			System.out.println(filename);
 
 			try (BufferedReader br = new BufferedReader(new FileReader(filename))) {
@@ -224,11 +224,11 @@ public class GraphTest extends JFrame {
 				String lsolmu;
 				String psolmu;
 				float paino;
-				
-				
-				
+
+
+
 				if (filename.substring(filename.length()-4).equals(".txt") && br.readLine().equals("PAT")) {
-					while ((rivi = br.readLine()) != null) {
+					while ((rivi = br.readLine()) != null && rivi.length()>4) {
 
 						try {
 							lsolmu = rivi.split("-")[0];
@@ -243,7 +243,7 @@ public class GraphTest extends JFrame {
 
 							e.printStackTrace();
 						}
-					} 
+					}
 				} else {
 					t.setText("V‰‰r‰ tiedostomuoto");
 				}

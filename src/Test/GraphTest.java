@@ -162,9 +162,9 @@ public class GraphTest extends JFrame {
 				int r1,r2,d;
 
 				// kirjoitetaan rand m‰‰r‰ yhteyksi‰ pienelt‰ p‰tk‰lt‰ ArrayListi‰ satunnaisilla et‰isyyksill‰
-				for (int x = 0; x < rand; x++) {
-					r1 = ThreadLocalRandom.current().nextInt(rand, (cities.size()/rand));
-					r2 = ThreadLocalRandom.current().nextInt(rand, (cities.size()/rand));
+				for (int x = 0; x < cities.size(); x++) {
+					r1 = ThreadLocalRandom.current().nextInt(0, cities.size());
+					r2 = ThreadLocalRandom.current().nextInt(0, cities.size());
 					d = ThreadLocalRandom.current().nextInt(0, 1000);
 					w.println(cities.get(r1) + "-" + d + "-" + cities.get(r2));
 				}

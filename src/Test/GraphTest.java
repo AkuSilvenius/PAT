@@ -6,19 +6,20 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.BufferedReader;
 import java.io.FileReader;
+import java.io.File;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.Map;
+import java.util.concurrent.ThreadLocalRandom;
 
 import javax.swing.*;
 import HS.*;
 
 @SuppressWarnings("serial")
 public class GraphTest extends JFrame {
-
-	private final static String FILENAME = "";
 
 	AbGraph g;
 	JPanel ylapan;
@@ -39,8 +40,6 @@ public class GraphTest extends JFrame {
 	Kuuntelija k;
 
 	public GraphTest() {
-
-
 
 		g = new AbGraph();
 
@@ -98,8 +97,6 @@ public class GraphTest extends JFrame {
 		public void actionPerformed(ActionEvent e) {
 			if (e.getSource() == luetied) readFile(getFile());
 			if (e.getSource() == tulostus) tulosta(g);
-			if (e.getSource() == tulostus)
-				tulosta(g);
 
 			if (e.getSource() == tyh) {
 				k1.setText("");
@@ -137,9 +134,52 @@ public class GraphTest extends JFrame {
 				t.setText("Tiedostonluku keskeytetty.");
 				return "";
 			} else {
-				return fc.getSelectedFile().getPath();
+				if (fc.getSelectedFile().getName().equals("US_Cities.txt")) return generateFile(fc.getSelectedFile().getPath());
+				else return fc.getSelectedFile().getPath();
 			}
 		} //getFile
+
+		public String generateFile(String f) {
+			try {
+
+				String l;
+				ArrayList<String> cities = new ArrayList<String>();
+				BufferedReader br = new BufferedReader(new FileReader(f));
+
+				// luetaan nimet .txt -> ArrayList
+				while ((l = br.readLine()) != null) {
+					cities.add(l);
+				}
+
+				System.out.println("Luettiin " + cities.size() + " kaupunkia");
+
+				File tmp = new File("generatedGraph.txt");
+				PrintWriter w = new PrintWriter(tmp, "UTF-8");
+				w.println("PAT");
+
+				// random luku v‰lilt‰ 25-50
+				int rand = ThreadLocalRandom.current().nextInt(25,51);
+				int r1,r2,d;
+
+				// kirjoitetaan rand m‰‰r‰ yhteyksi‰ pienelt‰ p‰tk‰lt‰ ArrayListi‰ satunnaisilla et‰isyyksill‰
+				for (int x = 0; x < rand; x++) {
+					r1 = ThreadLocalRandom.current().nextInt(rand, (cities.size()/rand));
+					r2 = ThreadLocalRandom.current().nextInt(rand, (cities.size()/rand));
+					d = ThreadLocalRandom.current().nextInt(0, 1000);
+					w.println(cities.get(r1) + "-" + d + "-" + cities.get(r2));
+				}
+
+				w.close();
+
+				System.out.println("Luotiin " + rand + " satunnaista yhteytt‰");
+
+				return tmp.getPath();
+
+			} catch (Exception e) {
+				e.printStackTrace();
+				return f;
+			}
+		} //generateFile
 
 		private String tulosviesti(LinkedList<AbEdge> a) {
 			String tmp = "MST:\n";
@@ -252,7 +292,7 @@ public class GraphTest extends JFrame {
 				e.printStackTrace();
 			}
 
-		}
+		} //readFile
 
 		public void tulosta(AbGraph g) {
 			System.out.println("VERKON TULOSTUS");

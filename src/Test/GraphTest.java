@@ -29,6 +29,7 @@ public class GraphTest extends JFrame {
 	JButton tyh;
 	JButton kruskal;
 	JButton tulostus;
+	JButton luetied;
 
 	Kuuntelija k;
 
@@ -52,20 +53,23 @@ public class GraphTest extends JFrame {
 
 		lisaa = new JButton("Lis‰‰");
 		lisaa.addActionListener(k);
-		kruskal = new JButton("Laske Kruskal");
+		kruskal = new JButton("Kruskal");
 		kruskal.addActionListener(k);
 		tyh = new JButton("Tyhjenn‰ kaikki");
 		tyh.addActionListener(k);
-		tulostus = new JButton("Tulosta verkko");
+		tulostus = new JButton("Tulosta");
 		tulostus.addActionListener(k);
+		luetied = new JButton("Lue tiedostosta");
+		luetied.addActionListener(k);
 
 		ylapan.add(k1, BorderLayout.LINE_START);
 		ylapan.add(matka, BorderLayout.CENTER);
 		ylapan.add(k2, BorderLayout.LINE_END);
 		ylapan.add(lisaa, BorderLayout.PAGE_END);
 		ylapan.add(tyh, BorderLayout.PAGE_START);
-		alapan.add(kruskal, BorderLayout.PAGE_START);
-		alapan.add(tulostus, BorderLayout.CENTER);
+		alapan.add(luetied, BorderLayout.CENTER);
+		alapan.add(kruskal, BorderLayout.LINE_START);
+		alapan.add(tulostus, BorderLayout.LINE_END);
 		alapan.add(t, BorderLayout.PAGE_END);
 
 		this.add(Box.createRigidArea(new Dimension(0, 1)));
@@ -84,6 +88,7 @@ public class GraphTest extends JFrame {
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
+			if (e.getSource() == luetied) readFile(getFile());
 			if (e.getSource() == tulostus) tulosta(g);
 			if (e.getSource() == tyh) {
 				k1.setText("");
@@ -120,6 +125,17 @@ public class GraphTest extends JFrame {
 
 			}
 		} //actionPerformed
+
+		private String getFile() {
+			final JFileChooser fc = new JFileChooser();
+			int ret = fc.showOpenDialog(alapan);
+			if (ret == 1) {
+				t.setText("Tiedostonluku keskeytetty.");
+				return;
+			} else {
+				return fc.getSelectedFile().getName();
+			}
+		} //getFile
 
 		private String tulosviesti(LinkedList<AbEdge> a) {
 			String tmp = "MST:\n";

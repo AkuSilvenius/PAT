@@ -96,13 +96,11 @@ public class GraphTest extends JFrame {
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
-<<<<<<< HEAD
 			if (e.getSource() == luetied) readFile(getFile());
 			if (e.getSource() == tulostus) tulosta(g);
-=======
 			if (e.getSource() == tulostus)
 				tulosta(g);
->>>>>>> 7b41ec3e94ff49a3393f332054cd36381d17e02f
+			
 			if (e.getSource() == tyh) {
 				k1.setText("");
 				k2.setText("");
@@ -137,9 +135,9 @@ public class GraphTest extends JFrame {
 			int ret = fc.showOpenDialog(alapan);
 			if (ret == 1) {
 				t.setText("Tiedostonluku keskeytetty.");
-				return;
+				return "";
 			} else {
-				return fc.getSelectedFile().getName();
+				return fc.getSelectedFile().getPath();
 			}
 		} //getFile
 
@@ -217,6 +215,8 @@ public class GraphTest extends JFrame {
 		} // tarkistaK
 
 		public void readFile(String filename) {
+			
+			System.out.println(filename);
 
 			try (BufferedReader br = new BufferedReader(new FileReader(filename))) {
 
@@ -224,22 +224,28 @@ public class GraphTest extends JFrame {
 				String lsolmu;
 				String psolmu;
 				float paino;
+				
+				
+				
+				if (filename.substring(filename.length()-4).equals(".txt") && br.readLine().equals("PAT")) {
+					while ((rivi = br.readLine()) != null) {
 
-				while ((rivi = br.readLine()) != null) {
-					
-					try {
-						lsolmu = rivi.split("-")[0];
-						paino = Float.parseFloat(rivi.split("-")[1]);
-						psolmu = rivi.split("-")[2];
+						try {
+							lsolmu = rivi.split("-")[0];
+							paino = Float.parseFloat(rivi.split("-")[1]);
+							psolmu = rivi.split("-")[2];
 
-						System.out.println("Lähtösolmu " + lsolmu + " paino " + paino + " päätesolmu " + psolmu);
+							System.out.println("Lähtösolmu " + lsolmu + " paino " + paino + " päätesolmu " + psolmu);
 
-						tarkistaK(paino, lsolmu, psolmu);
-						
-					} catch (NumberFormatException e) {
-						
-						e.printStackTrace();
-					}
+							tarkistaK(paino, lsolmu, psolmu);
+
+						} catch (Exception e) {
+
+							e.printStackTrace();
+						}
+					} 
+				} else {
+					t.setText("Väärä tiedostomuoto");
 				}
 
 			} catch (IOException e) {

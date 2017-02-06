@@ -115,12 +115,19 @@ public class GraphTest extends JFrame {
 			}
 
 			if (e.getSource() == kruskal) {
-				t.setText("Lasketaan...");
-				LinkedList<AbEdge> a = MST(g);
-				Object opt[] = { "Sulje" };
-				String viesti = tulosviesti(a);
-				t.setText("Kruskal laskettu");
+				String viesti;
 
+				try {
+					t.setText("Lasketaan...");
+					LinkedList<AbEdge> a = MST(g);
+					viesti = tulosviesti(a);
+					t.setText("Kruskal laskettu");
+				} catch (NullPointerException n) {
+					viesti = "Kruskalia ei voitu laskea (syynä voi olla esim. verkon epäyhtenäisyys).";
+					t.setText("Kruskal keskeytetty");
+				}
+
+				Object opt[] = { "Sulje" };
 				JOptionPane.showOptionDialog(null, viesti, "GraphTest", JOptionPane.INFORMATION_MESSAGE,
 						JOptionPane.PLAIN_MESSAGE, null, opt, opt[0]);
 

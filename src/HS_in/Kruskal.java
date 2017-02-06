@@ -12,14 +12,14 @@ import HS.AbGraph;
 public interface Kruskal {
 
 	/**
-	 * Etsii ja palauttaa minimaalisen virittävän puun (Minimum Spanning Tree, MST),
-	 * ts. kaarien listan, joka yhdistää kaikki verkon g
-	 * solmut pienimmillä mahdollisilla kaarilla.
-	 * @param g - verkko, jolle MST halutaan löytää
+	 * Etsii ja palauttaa minimaalisen virittï¿½vï¿½n puun (Minimum Spanning Tree, MST),
+	 * ts. kaarien listan, joka yhdistï¿½ï¿½ kaikki verkon g
+	 * solmut pienimmillï¿½ mahdollisilla kaarilla.
+	 * @param g - verkko, jolle MST halutaan lï¿½ytï¿½ï¿½
 	 * @return lista kaarista, joista MST koostuu
-	 * 
+	 *
 	 * @author Aku Silvenius
 	 */
-	LinkedList<AbEdge> MSTKruskal(AbGraph g);
+	LinkedList<AbEdge> MSTKruskal(AbGraph g) throws NullPointerException;
 
 }

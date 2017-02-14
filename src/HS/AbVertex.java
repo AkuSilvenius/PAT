@@ -2,33 +2,35 @@ package HS;
 
 import java.util.*;
 import HS_in.Vertex;
+import HS_in.Edge;
+import HS_in.Graph;
 
-public class AbVertex extends Object implements Comparable<Object>, Iterable<AbEdge>, Vertex {
+public class AbVertex extends Object implements Comparable<Object>, Iterable<Edge>, Vertex {
 
-	public LinkedList<AbEdge> edges;
+	public LinkedList<Edge> edges;
 	String label;
 	int color;
 
 	public AbVertex() {
-		this.edges = new LinkedList<AbEdge>();
+		this.edges = new LinkedList<Edge>();
 		this.label = "";
 		this.color = HSCol.NaN;
 	}
 	
 	public AbVertex(String label) {
-		this.edges = new LinkedList<AbEdge>();
+		this.edges = new LinkedList<Edge>();
 		this.label = label;
 		this.color = HSCol.NaN;
 	}
 	
 	public AbVertex(int clr) {
-		this.edges = new LinkedList<AbEdge>();
+		this.edges = new LinkedList<Edge>();
 		this.label = "";
 		this.color = clr;
 	}
 	
 	public AbVertex(int clr, String label) {
-		this.edges = new LinkedList<AbEdge>();
+		this.edges = new LinkedList<Edge>();
 		this.label = label;
 		this.color = clr;	
 	}
@@ -37,8 +39,8 @@ public class AbVertex extends Object implements Comparable<Object>, Iterable<AbE
 		return this.color;
 	}
 
-	public AbEdge getEdge(AbVertex v) {
-		for (AbEdge e : this.edges)
+	public Edge getEdge(Vertex v) {
+		for (Edge e : this.edges)
 			if (e.getEndPoint().equals(v)) return e;
 		return null;
 	}
@@ -53,48 +55,47 @@ public class AbVertex extends Object implements Comparable<Object>, Iterable<AbE
 		this.color = clr;
 	}
 
-
 	public void setLabel(String label) {
 		this.label = label;
 	}
 
 
-	public AbEdge addEdge(AbGraph g, AbVertex v) {
-		AbEdge tmp = new AbEdge(v);
-		tmp.startPoint = this;
+	public Edge addEdge(Graph g, Vertex v) {
+		Edge tmp = new AbEdge(v);
+		tmp.setStartPoint(this);
 		this.edges.add(tmp);
-		g.elist.add(tmp);
+		g.getEdges().add(tmp);
 		return tmp;
 	}
 
-	public AbEdge addEdge(AbGraph g, AbVertex v, float w) {
-		AbEdge tmp = new AbEdge(v, w);
-		tmp.startPoint = this;
+	public Edge addEdge(Graph g, Vertex v, float w) {
+		Edge tmp = new AbEdge(v, w);
+		tmp.setStartPoint(this);
 		this.edges.add(tmp);
-		g.elist.add(tmp);
+		g.getEdges().add(tmp);
 		return tmp;
 	}
 
 	
-	public AbEdge addEdge(AbGraph g, AbVertex v, int clr) {
-		AbEdge tmp = new AbEdge(v, clr);
-		tmp.startPoint = this;
+	public Edge addEdge(Graph g, Vertex v, int clr) {
+		Edge tmp = new AbEdge(v, clr);
+		tmp.setStartPoint(this);
 		this.edges.add(tmp);
-		g.elist.add(tmp);
+		g.getEdges().add(tmp);
 		return tmp;
 	}
 
-	public AbEdge addEdge(AbGraph g, AbVertex v, float w, int clr) {
-		AbEdge tmp = new AbEdge(v, w, clr);
-		tmp.startPoint = this;
+	public Edge addEdge(Graph g, Vertex v, float w, int clr) {
+		Edge tmp = new AbEdge(v, w, clr);
+		tmp.setStartPoint(this);
 		this.edges.add(tmp);
-		g.elist.add(tmp);
+		g.getEdges().add(tmp);
 		return tmp;
 	}
 	
-	public void removeEdge(AbEdge e) {
-		for (AbEdge abEdge : this.edges)
-			if (abEdge.equals(e)) this.edges.remove(e); // hidas
+	public void removeEdge(Edge e) {
+		for (Edge Edge : this.edges)
+			if (Edge.equals(e)) this.edges.remove(e); // hidas
 	}
 	
 	public void removeEdges() {
@@ -102,19 +103,19 @@ public class AbVertex extends Object implements Comparable<Object>, Iterable<AbE
 			
 	}
 	
-	public Iterable<AbVertex> neighbors() {
-		LinkedList<AbVertex> tmp = new LinkedList<AbVertex>();
-		for (AbEdge e : this.edges) tmp.add(e.getEndPoint());
+	public Iterable<Vertex> neighbors() {
+		LinkedList<Vertex> tmp = new LinkedList<Vertex>();
+		for (Edge e : this.edges) tmp.add(e.getEndPoint());
 		return tmp;
 		
 	}
 
-	public boolean isAdjacent(AbVertex v) {
-		for(AbEdge e : this.edges){
+	public boolean isAdjacent(Vertex v) {
+		for(Edge e : this.edges){
 			if(e.getEndPoint().equals(v)){
 				return true;
 			}
-		}for (AbEdge e : v.edges){
+		}for (Edge e : v.getEdges()){
 			if(e.getEndPoint().equals(this)){
 				return true;
 			}
@@ -123,18 +124,23 @@ public class AbVertex extends Object implements Comparable<Object>, Iterable<AbE
 		return false;
 	}
 	
-	public Iterable<AbEdge> edges() {
+	public Iterable<Edge> edges() {
 		return this.edges;
 	}
 	
 	@Override
-	public Iterator<AbEdge> iterator() {
+	public Iterator<Edge> iterator() {
 		return this.iterator();
 	}
 
 	@Override
 	public int compareTo(Object o) {
 		return this.compareTo(o);
+	}
+
+	@Override
+	public LinkedList<Edge> getEdges() {
+		return this.edges;
 	}
 	
 }

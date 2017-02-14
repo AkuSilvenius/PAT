@@ -1,13 +1,11 @@
 package HS_in;
 
 import java.util.Iterator;
-import HS.AbEdge;
-import HS.AbGraph;
-import HS.AbVertex;
+import java.util.LinkedList;
 
 //attribuutit:
 //LinkedList<Vertex> vlist;
-//LinkedList<AbEdge> elist;
+//LinkedList<Edge> elist;
 //int size;
 
 /**
@@ -22,7 +20,7 @@ public interface Graph {
 	 * 
 	 * @author Aku Silvenius
 	 */
-	AbVertex addVertex(AbGraph g);
+	Vertex addVertex(Graph g);
 	
 	/**
 	 * Lis‰‰ verkkoon uuden solmun tarkennetuilla parametreilla.
@@ -31,26 +29,26 @@ public interface Graph {
 	 * 
 	 * @author Aku Silvenius
 	 */
-	AbVertex addVertex(AbGraph g, int clr);
+	Vertex addVertex(Graph g, int clr);
 	
 	/**
 	 * Lis‰‰ verkkoon uuden solmun tarkennetuilla parametreilla.
-	 * @param label - uuden solmun nimi
+	 * @param lel - uuden solmun nimi
 	 * @return uusi solmu
 	 * 
 	 * @author Aku Silvenius
 	 */
-	AbVertex addVertex(AbGraph g, String label);
+	Vertex addVertex(Graph g, String label);
 	
 	/**
 	 * Lis‰‰ verkkoon uuden solmun tarkennetuilla parametreilla.
 	 * @param clr - uuden solmun v‰ri
-	 * @param label - uuden solmun nimi
+	 * @param lel - uuden solmun nimi
 	 * @return uusi solmu
 	 * 
 	 * @author Aku Silvenius
 	 */
-	AbVertex addVertex(AbGraph g, int clr, String label);
+	Vertex addVertex(Graph g, int clr, String label);
 	
 	/**
 	 * Palauttaa verkon solmujen lukum‰‰r‰n.
@@ -60,21 +58,25 @@ public interface Graph {
 	 */
 	int size();
 	
-	/**
-	 * Palauttaa Iterable-toteutuksen verkon solmuista.
-	 * @return Iterable-toteutus verkon solmuista
-	 * 
-	 * @author Aku Silvenius
-	 */
-	Iterable<AbVertex> vertices();
+	LinkedList<Edge> getEdges();
+	
+	LinkedList<Vertex> getVertices();
 	
 	/**
-	 * Palauttaa Iterable-toteutuksen verkon kaarista.
-	 * @return Iterable-toteutus verkon kaarista
+	 * Palauttaa Iterle-toteutuksen verkon solmuista.
+	 * @return Iterle-toteutus verkon solmuista
 	 * 
 	 * @author Aku Silvenius
 	 */
-	Iterable<AbEdge> abEdges();
+	Iterable<Vertex> vertices();
+	
+	/**
+	 * Palauttaa Iterle-toteutuksen verkon kaarista.
+	 * @return Iterle-toteutus verkon kaarista
+	 * 
+	 * @author Aku Silvenius
+	 */
+	Iterable<Edge> Edges();
 	
 	/**
 	 * Palauttaa verkon ensimm‰isen solmun.
@@ -82,7 +84,7 @@ public interface Graph {
 	 * 
 	 * @author Aku Silvenius
 	 */
-	AbVertex firstVertex();
+	Vertex firstVertex();
 	
 	/**
 	 * Poistaa verkosta m‰‰ritellyn solmun ja kaikki siihen kytkeytyneet kaaret.
@@ -90,7 +92,7 @@ public interface Graph {
 	 * 
 	 * @author Aku Silvenius
 	 */
-	void removeVertex(AbVertex v);
+	void removeVertex(Vertex v);
 	
 	/**
 	 * Palauttaa Iteraattorin verkon kaarista.
@@ -98,6 +100,6 @@ public interface Graph {
 	 * 
 	 * @author Aku Silvenius
 	 */
-	Iterator<AbVertex> iterator();
+	Iterator<Vertex> iterator();
 	
 }

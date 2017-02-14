@@ -1,44 +1,47 @@
 package HS;
 
 import java.util.LinkedList;
-import HS.AbTree.*;
-import HS_in.MFSet;
+import HS_in.*;
 
 public class AbMFSet implements MFSet {
 
 	LinkedList<AbTree> forest;
 
-	public AbMFSet(AbGraph g) {
+	public AbMFSet(Graph g) {
 		this.forest = new LinkedList<AbTree>();
-		for (AbVertex v : g.vertices()) this.makeSet(v); 
+		for (Vertex v : g.vertices()) this.makeSet(v); 
 	}
 
-	public boolean makeSet(AbVertex v) {
+	public boolean makeSet(Vertex v) {
 		this.forest.add(new AbTree(v));
 		return true;
 	}
 
-	public AbNode findSet(AbNode n) {
+	public Node findSet(Node n) {
 
-		if (n != n.parent) {
-			n.parent = findSet(n.parent);
+		if (n != n.getParent()) {
+			n.setParent(findSet(n.getParent()));
 		}
-		return n.parent;
+		return n.getParent();
 
 	}
 
-	public void union(AbNode x, AbNode y) {
+	public void union(Node x, Node y) {
 		link(findSet(x), findSet(y));
 	}
 
-	public void link(AbNode x, AbNode y) {
-		if (x.rank > y.rank) y.parent = x;
-		else if (x.rank < y.rank) x.parent = y; 
+	public void link(Node x, Node y) {
+		if (x.getRank() > y.getRank()) y.setParent(x);
+		else if (x.getRank() < y.getRank()) x.setParent(y); 
 
-		if (x.rank == y.rank) {
-			x.parent = y;
-			y.rank++;
+		if (x.getRank() == y.getRank()) {
+			x.setParent(y);
+			y.setRank(y.getRank()+1);
 		}
+	}
+
+	public LinkedList<AbTree> getForest() {
+		return this.forest;
 	}
 
 }

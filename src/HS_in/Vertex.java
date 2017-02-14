@@ -1,12 +1,10 @@
 package HS_in;
 
 import java.util.Iterator;
-import HS.AbEdge;
-import HS.AbGraph;
-import HS.AbVertex;
+import java.util.LinkedList;
 
 //attribuutit:
-//LinkedList<AbEdge> abEdges;
+//LinkedList<Edge> Edges;
 //String label;
 //int color;
 //int index;
@@ -33,7 +31,7 @@ public interface Vertex {
 	 * 
 	 * @author Teemu Holttinen
 	 */
-	AbEdge getEdge(AbVertex v);
+	Edge getEdge(Vertex v);
 
 	/**
 	 * Palauttaa solmun label-tiedon
@@ -42,6 +40,8 @@ public interface Vertex {
 	 * @author Teemu Holttinen
 	 */
 	String getLabel();
+	
+	LinkedList<Edge> getEdges();
 
 	/**
 	 * Asettaa solmulle v‰rin
@@ -61,7 +61,7 @@ public interface Vertex {
 	 * 
 	 * @author Teemu Holttinen
 	 */
-	AbEdge addEdge(AbGraph g, AbVertex v);
+	Edge addEdge(Graph g, Vertex v);
 
 	/**
 	 * Lis‰‰ kaaren t‰m‰n solmun ja m‰‰ritetyn solmun v‰lille lis‰tiedoilla
@@ -71,7 +71,7 @@ public interface Vertex {
 	 * 
 	 * @author Teemu Holttinen
 	 */
-	AbEdge addEdge(AbGraph g, AbVertex v, float w);
+	Edge addEdge(Graph g, Vertex v, float w);
 
 	/**
 	 * Lis‰‰ kaaren t‰m‰n solmun ja m‰‰ritetyn solmun v‰lille lis‰tiedoilla
@@ -81,7 +81,7 @@ public interface Vertex {
 	 * 
 	 * @author Teemu Holttinen
 	 */
-	AbEdge addEdge(AbGraph g, AbVertex v, int clr);
+	Edge addEdge(Graph g, Vertex v, int clr);
 
 	/**
 	 * Lis‰‰ kaaren t‰m‰n solmun ja m‰‰ritetyn solmun v‰lille lis‰tiedoilla
@@ -92,7 +92,7 @@ public interface Vertex {
 	 * 
 	 * @author Teemu Holttinen
 	 */
-	AbEdge addEdge(AbGraph g, AbVertex v, float w, int clr);
+	Edge addEdge(Graph g, Vertex v, float w, int clr);
 
 	/**
 	 * Poistaa m‰‰ritellyn kaaren t‰st‰ solmusta
@@ -100,7 +100,7 @@ public interface Vertex {
 	 * 
 	 * @author Teemu Holttinen
 	 */
-	void removeEdge(AbEdge e);
+	void removeEdge(Edge e);
 
 	/**
 	 * Poistaa kaikki kaaret t‰st‰ solmusta
@@ -115,7 +115,7 @@ public interface Vertex {
 	 * 
 	 * @author Teemu Holttinen
 	 */
-	Iterable<AbVertex> neighbors();
+	Iterable<Vertex> neighbors();
 
 	/**
 	 * Palauttaa boolean arvon onko t‰m‰ solmu ja m‰‰ritelty solmu yhdistetty kaarella
@@ -124,7 +124,7 @@ public interface Vertex {
 	 * 
 	 * @author Teemu Holttinen
 	 */
-	boolean isAdjacent(AbVertex v);
+	boolean isAdjacent(Vertex v);
 
 	/**
 	 * Palauttaa iterablen t‰st‰ solmusta l‰htevist‰ kaarista
@@ -132,7 +132,7 @@ public interface Vertex {
 	 * 
 	 * @author Teemu Holttinen
 	 */
-	Iterable<AbEdge> edges();
+	Iterable<Edge> edges();
 
 	/**
 	 * Palauttaa iteraattorin solmusta l‰htevist‰ kaarista
@@ -140,7 +140,7 @@ public interface Vertex {
 	 * 
 	 * @author Teemu Holttinen
 	 */
-	Iterator<AbEdge> iterator();
+	Iterator<Edge> iterator();
 
 	/**
 	 * Solmujen compareTo-metodi

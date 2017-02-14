@@ -1,12 +1,9 @@
 package HS_in;
 
-import HS.AbVertex;
-import HS.AbEdge;
-
 //attribuutit:
 //Vertex startPoint;
 //Vertex endPoint;
-//String label;
+//String lel;
 //float weight;
 //int color;
 
@@ -39,7 +36,7 @@ public interface Edge {
 	 *
 	 * @author Teemu Holttinen
 	 */
-	boolean goesOut(AbVertex v);
+	boolean goesOut(Vertex v);
 
 	/**
 	 * Palauttaa kaaren painon
@@ -55,7 +52,7 @@ public interface Edge {
 	 *
 	 * @author Teemu Holttinen
 	 */
-	AbVertex getEndPoint();
+	Vertex getEndPoint();
 
 	/**
 	 * Palauttaa kaaren loppusolmun tai null, jos kaarta ei ole
@@ -64,7 +61,7 @@ public interface Edge {
 	 *
 	 * @author Teemu Holttinen
 	 */
-	AbVertex getEndPoint(AbVertex v);
+	Vertex getEndPoint(Vertex v);
 
 	/**
 	 * Palauttaa kaaren lähtösomun
@@ -72,7 +69,9 @@ public interface Edge {
 	 *
 	 * @author Teemu Holttinen
 	 */
-	AbVertex getStartPoint();
+	Vertex getStartPoint();
+	
+	void setStartPoint(Vertex v);
 
 	/**
 	 * compareTo -metodi kaarten vertaamiseen
@@ -81,6 +80,6 @@ public interface Edge {
 	 *
 	 * @author Teemu Holttinen
 	 */
-	int compareTo(AbEdge e);
+	int compareTo(Edge e);
 
 }

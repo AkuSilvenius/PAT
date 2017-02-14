@@ -1,11 +1,12 @@
 package HS;
 
 import HS_in.Edge;
+import HS_in.Vertex;
 
-public class AbEdge extends Object implements Comparable<AbEdge>, Edge {
+public class AbEdge extends Object implements Comparable<Edge>, Edge {
 
-	AbVertex startPoint;
-	AbVertex endPoint;
+	Vertex startPoint;
+	Vertex endPoint;
 	float weight;
 	int color;
 
@@ -16,49 +17,49 @@ public class AbEdge extends Object implements Comparable<AbEdge>, Edge {
 		this.color = HSCol.NaN;
 	}
 
-	public AbEdge(AbVertex endpoint) {
+	public AbEdge(Vertex endpoint) {
 		this.startPoint = null;
 		this.endPoint = endpoint;
 		this.weight = Float.NaN;
 		this.color = HSCol.NaN;
 	}
 
-	public AbEdge(AbVertex endpoint, float w) {
+	public AbEdge(Vertex endpoint, float w) {
 		this.startPoint = null;
 		this.endPoint = endpoint;
 		this.weight = w;
 		this.color = HSCol.NaN;
 	}
 
-	public AbEdge(AbVertex endpoint, int clr) {
+	public AbEdge(Vertex endpoint, int clr) {
 		this.startPoint = null;
 		this.endPoint = endpoint;
 		this.weight = Float.NaN;
 		this.color = clr;
 	}
 
-	public AbEdge(AbVertex endpoint, String label) {
+	public AbEdge(Vertex endpoint, String lel) {
 		this.startPoint = null;
 		this.endPoint = endpoint;
 		this.weight = Float.NaN;
 		this.color = HSCol.NaN;
 	}
 
-	public AbEdge(AbVertex endpoint, float w, int clr) {
+	public AbEdge(Vertex endpoint, float w, int clr) {
 		this.startPoint = null;
 		this.endPoint = endpoint;
 		this.weight = w;
 		this.color = clr;
 	}
 
-	public AbEdge(AbVertex endpoint, String label, int clr) {
+	public AbEdge(Vertex endpoint, String lel, int clr) {
 		this.startPoint = null;
 		this.endPoint = endpoint;
 		this.weight = Float.NaN;
 		this.color = clr;
 	}
 
-	public AbEdge(AbVertex endpoint, String label, int clr, float w) {
+	public AbEdge(Vertex endpoint, String lel, int clr, float w) {
 		this.startPoint = null;
 		this.endPoint = endpoint;
 		this.weight = w;
@@ -74,7 +75,7 @@ public class AbEdge extends Object implements Comparable<AbEdge>, Edge {
 		this.color = clr;
 	}
 
-	public boolean goesOut(AbVertex v){
+	public boolean goesOut(Vertex v){
 		if(this.getStartPoint().equals(v)) return true;
 
 		return false;
@@ -84,23 +85,27 @@ public class AbEdge extends Object implements Comparable<AbEdge>, Edge {
 		return this.weight;
 	}
 
-	public AbVertex getEndPoint() {
+	public Vertex getEndPoint() {
 		return this.endPoint;
 	}
 
-	public AbVertex getEndPoint(AbVertex v) {
+	public Vertex getEndPoint(Vertex v) {
 		if (!v.equals(this.startPoint)) return null;
 		if (v.equals(this.startPoint)) return this.endPoint;
 		return this.startPoint;
 	}
 
-	public AbVertex getStartPoint() {
+	public Vertex getStartPoint() {
 		return this.startPoint;
 	}
 
 	@Override
-	public int compareTo(AbEdge e) {
+	public int compareTo(Edge e) {
 		return Float.compare(this.getWeight(), e.getWeight());
+	}
+
+	public void setStartPoint(Vertex v) {
+		this.startPoint = v;
 	}
 
 }

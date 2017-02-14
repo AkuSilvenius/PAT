@@ -17,6 +17,7 @@ import java.util.concurrent.ThreadLocalRandom;
 
 import javax.swing.*;
 import HS.*;
+import HS_in.*;
 
 /**
  * Testiohjelma parityön verkon testaamista varten.
@@ -25,7 +26,7 @@ import HS.*;
 @SuppressWarnings("serial")
 public class GraphTest extends JFrame {
 
-	AbGraph g;
+	Graph g;
 	JPanel ylapan;
 	JPanel alapan;
 
@@ -104,13 +105,13 @@ public class GraphTest extends JFrame {
 	 * Kuuntelee käyttöliittymässä tapahtuvia tapahtumia.
 	 * @author Aku Silvenius
 	 */
-	public class Kuuntelija extends AbKruskal implements ActionListener {
+	public class Kuuntelija implements ActionListener {
 
-	 /**
- 		* Ottaa vastaan tapahtuman (ActionEvent)
- 		* @param e - tapahtuma
- 		* @author Aku Silvenius
- 		*/
+		/**
+		 * Ottaa vastaan tapahtuman (ActionEvent)
+		 * @param e - tapahtuma
+		 * @author Aku Silvenius
+		 */
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			if (e.getSource() == luetied) readFile(getFile());
@@ -137,7 +138,7 @@ public class GraphTest extends JFrame {
 
 				try {
 					t.setText("Lasketaan...");
-					LinkedList<AbEdge> a = MST(g);
+					LinkedList<Edge> a = MST(g);
 					viesti = tulosviesti(a);
 					t.setText("Kruskal laskettu");
 				} catch (NullPointerException n) {
@@ -152,12 +153,12 @@ public class GraphTest extends JFrame {
 			}
 		} //actionPerformed
 
-	 /**
- 		* Tiedostonhaku-/valintaikkunan avaava metodi
-		* valmiin verkon lukemista varten.
-		* @return Valitun tiedoston polku tai tyhjä merkkijono
- 		* @author Aku Silvenius
- 		*/
+		/**
+		 * Tiedostonhaku-/valintaikkunan avaava metodi
+		 * valmiin verkon lukemista varten.
+		 * @return Valitun tiedoston polku tai tyhjä merkkijono
+		 * @author Aku Silvenius
+		 */
 		private String getFile() {
 			final JFileChooser fc = new JFileChooser();
 			int ret = fc.showOpenDialog(alapan);
@@ -170,13 +171,13 @@ public class GraphTest extends JFrame {
 			}
 		} //getFile
 
-	 /**
-		* Luo satunnaisen verkon tiedostosta 'US_Cities.txt'
-		* @param f - tiedosto josta verkko generoidaan (US_Cities.txt)
-		* @return Generoidun verkon (.txt) polku
-		*
-		* @author Aku Silvenius
-		*/
+		/**
+		 * Luo satunnaisen verkon tiedostosta 'US_Cities.txt'
+		 * @param f - tiedosto josta verkko generoidaan (US_Cities.txt)
+		 * @return Generoidun verkon (.txt) polku
+		 *
+		 * @author Aku Silvenius
+		 */
 		public String generateFile(String f) {
 			try {
 
@@ -219,41 +220,40 @@ public class GraphTest extends JFrame {
 			}
 		} //generateFile
 
-	 /**
- 		* Luo tulosviestin MST-listan perusteella.
- 		* @param a - MST:n sisältävä LinkedList
- 		* @return tulosviesti
- 		* @author Aku Silvenius
- 		*/
-		private String tulosviesti(LinkedList<AbEdge> a) {
+		/**
+		 * Luo tulosviestin MST-listan perusteella.
+		 * @param a - MST:n sisältävä LinkedList
+		 * @return tulosviesti
+		 * @author Aku Silvenius
+		 */
+		private String tulosviesti(LinkedList<Edge> a) {
 			String tmp = "MST:\n";
 			String s;
-			for (AbEdge e : a) {
+			for (Edge e : a) {
 				s = e.getStartPoint().getLabel() + "--{ " + e.getWeight() + " }--" + e.getEndPoint().getLabel();
 				tmp += s + "\n";
 			}
 			return tmp;
 		} //tulosviesti
 
-	 /**
- 		* Kutsumetodi Kruskalin algoritmille
- 		* @param g - verkko josta Kruskal lasketaan
- 		* @return MST:n sisältävä LinkedList
- 		* @author Aku Silvenius
- 		*/
-		private LinkedList<AbEdge> MST(AbGraph g) {
-			LinkedList<AbEdge> tmp = MSTKruskal(g);
-			return tmp;
+		/**
+		 * Kutsumetodi Kruskalin algoritmille
+		 * @param g - verkko josta Kruskal lasketaan
+		 * @return MST:n sisältävä LinkedList
+		 * @author Aku Silvenius
+		 */
+		private LinkedList<Edge> MST(Graph g) {
+			return MSTKruskal(g);
 		}
 
-	 /**
- 		* Tarkistaa ja ehtojen täyttyessä lisää verkkoon
-		* käyttöliittymästä saadut tiedot.
- 		* @param dist - kahden solmun välinen etäisyys
-		* @param t1 - lähtösolmu
- 		* @param t2 - päätesolmu
- 		* @author Teemu Holttinen
- 		*/
+		/**
+		 * Tarkistaa ja ehtojen täyttyessä lisää verkkoon
+		 * käyttöliittymästä saadut tiedot.
+		 * @param dist - kahden solmun välinen etäisyys
+		 * @param t1 - lähtösolmu
+		 * @param t2 - päätesolmu
+		 * @author Teemu Holttinen
+		 */
 		public void tarkistaK(float dist, String t1, String t2) {
 
 			if (t1.length() == 0 || t2.length() == 0) {
@@ -267,9 +267,9 @@ public class GraphTest extends JFrame {
 
 			boolean a = false;
 			boolean b = false;
-			AbVertex vx = null;
-			AbVertex ve = null;
-			for (AbVertex v : g.vertices()) {
+			Vertex vx = null;
+			Vertex ve = null;
+			for (Vertex v : g.vertices()) {
 				if (v.getLabel().equals(t1)) {
 					a = true;
 					vx = v;
@@ -313,11 +313,11 @@ public class GraphTest extends JFrame {
 
 		} //tarkistaK
 
-	 /**
-	 	* Lukee valitun tiedoston ja lisää sisällön verkkoon.
-		* @param filename - valitun tiedoston polku
-		* @author Teemu Holttinen
-		*/
+		/**
+		 * Lukee valitun tiedoston ja lisää sisällön verkkoon.
+		 * @param filename - valitun tiedoston polku
+		 * @author Teemu Holttinen
+		 */
 		public void readFile(String filename) {
 
 			System.out.println(filename);
@@ -356,16 +356,16 @@ public class GraphTest extends JFrame {
 
 		} //readFile
 
-	 /**
- 	 	* Tulostaa verkon konsoliin.
-		* @param g - verkko
- 		* @author Aku Silvenius
- 		*/
-		public void tulosta(AbGraph g) {
+		/**
+		 * Tulostaa verkon konsoliin.
+		 * @param g - verkko
+		 * @author Aku Silvenius
+		 */
+		public void tulosta(Graph g) {
 			System.out.println("VERKON TULOSTUS");
-			for (AbVertex v : g.vertices()) {
+			for (Vertex v : g.vertices()) {
 				System.out.print("[" + v.getLabel() + "]: ");
-				for (AbEdge e : v.edges()) {
+				for (Edge e : v.edges()) {
 					System.out.print("[(" + e.getWeight() + ") " + e.getEndPoint().getLabel() + "]; ");
 				}
 				System.out.print("\n");

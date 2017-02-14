@@ -2,37 +2,40 @@ package HS;
 
 import java.util.LinkedList;
 import java.util.Iterator;
+import HS_in.Vertex;
+import HS_in.Edge;
+import HS_in.Graph;
 
-public class AbGraph extends Object implements Iterable<AbVertex>, HS_in.Graph {
+public class AbGraph extends Object implements Iterable<Vertex>, HS_in.Graph {
 
-	LinkedList<AbVertex> vlist;
-	LinkedList<AbEdge> elist;
+	LinkedList<Vertex> vlist;
+	LinkedList<Edge> elist;
 	
 	public AbGraph() {
-		this.vlist = new LinkedList<AbVertex>();
-		this.elist = new LinkedList<AbEdge>();
+		this.vlist = new LinkedList<Vertex>();
+		this.elist = new LinkedList<Edge>();
 	}
 	
-	public AbVertex addVertex(AbGraph g) {
-		AbVertex tmp = new AbVertex();
+	public Vertex addVertex(Graph g) {
+		Vertex tmp = new AbVertex();
 		this.vlist.add(tmp);
 		return tmp;
 	}
 	
-	public AbVertex addVertex(AbGraph g, int clr) {
-		AbVertex tmp = new AbVertex(clr);
+	public Vertex addVertex(Graph g, int clr) {
+		Vertex tmp = new AbVertex(clr);
 		this.vlist.add(tmp);
 		return tmp;
 	}
 	
-	public AbVertex addVertex(AbGraph g, String label) { 
-		AbVertex tmp = new AbVertex(label);
+	public Vertex addVertex(Graph g, String label) { 
+		Vertex tmp = new AbVertex(label);
 		this.vlist.add(tmp);
 		return tmp;
 	}
 	
-	public AbVertex addVertex(AbGraph g, int clr, String label) {
-		AbVertex tmp = new AbVertex(clr,label);
+	public Vertex addVertex(Graph g, int clr, String label) {
+		Vertex tmp = new AbVertex(clr,label);
 		this.vlist.add(tmp);
 		return tmp;
 	}
@@ -41,28 +44,35 @@ public class AbGraph extends Object implements Iterable<AbVertex>, HS_in.Graph {
 		return this.vlist.size();
 	}
 	
-	public Iterable<AbVertex> vertices() {
+	public Iterable<Vertex> vertices() {
 		return this.vlist;
 	}
 	
-	public Iterable<AbEdge> abEdges() {
-		
+	public Iterable<Edge> Edges() {
 		return this.elist;
 	}
 	
-	public AbVertex firstVertex() {
+	public Vertex firstVertex() {
 		return this.vlist.peekFirst();
 	}
 	
-	public void removeVertex(AbVertex v) {
+	public void removeVertex(Vertex v) {
 		this.vlist.remove(this.vlist.indexOf(v));
-		for (AbEdge e : this.elist)
+		for (Edge e : this.elist)
 			if (e.getEndPoint().equals(v) || e.getStartPoint().equals(v))
 				elist.remove(this.elist.indexOf(e));
 	}
 
-	public Iterator<AbVertex> iterator() {
+	public Iterator<Vertex> iterator() {
 		return this.vlist.iterator();
+	}
+
+	public LinkedList<Edge> getEdges() {
+		return this.elist;
+	}
+	
+	public LinkedList<Vertex> getVertices() {
+		return this.vlist;
 	}
 
 }

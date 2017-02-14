@@ -2,9 +2,6 @@ package HS_in;
 
 import java.util.LinkedList;
 
-import HS.AbEdge;
-import HS.AbGraph;
-
 /**
  * Rajapinta Kruskalin algoritmille.
  * @author Aku Silvenius
@@ -20,6 +17,6 @@ public interface Kruskal {
 	 *
 	 * @author Aku Silvenius
 	 */
-	LinkedList<AbEdge> MSTKruskal(AbGraph g) throws NullPointerException;
+	LinkedList<Edge> MSTKruskal(Graph g) throws NullPointerException;
 
 }

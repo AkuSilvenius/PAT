@@ -1,10 +1,10 @@
 package HS_in;
 
-import HS.AbVertex;
-import HS.AbTree.AbNode;
+import java.util.LinkedList;
+import HS.AbTree;
 
 //attribuutit:
-//LinkedList<HSTree> forest;
+//LinkedList<Tree> forest;
 
 /**
 * Rajapinta pistevieraiden joukkojen operaatioihin.
@@ -19,7 +19,7 @@ public interface MFSet {
 	 * 
 	 * @author Aku Silvenius
 	 */
-	boolean makeSet(AbVertex v);
+	boolean makeSet(Vertex v);
 
 	/**
 	 * Etsii ja palauttaa joukon (puun) juurisolmun. Samalla
@@ -29,7 +29,7 @@ public interface MFSet {
 	 * 
 	 * @author Aku Silvenius
 	 */
-	AbNode findSet(AbNode n);
+	Node findSet(Node n);
 
 	/**
 	 * Kuorrutusmetodi kahden solmun yhdist‰miselle. Etsii parametreina saatujen
@@ -39,7 +39,7 @@ public interface MFSet {
 	 * 
 	 * @author Aku Silvenius
 	 */
-	void union(AbNode x, AbNode y);
+	void union(Node x, Node y);
 
 	/**
 	 * Yhdist‰‰ kaksi joukkoa (puuta) toisiinsa, ts. p‰ivitt‰‰ toisen puun juuri
@@ -50,6 +50,8 @@ public interface MFSet {
 	 * 
 	 * @author Aku Silvenius
 	 */
-	void link(AbNode x, AbNode y);
+	void link(Node x, Node y);
+	
+	LinkedList<AbTree> getForest();
 
 }

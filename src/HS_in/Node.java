@@ -1,8 +1,5 @@
 package HS_in;
 
-import HS.AbVertex;
-import HS.AbTree.AbNode;
-
 //attribuutit:
 //Node parent;
 //Vertex element;
@@ -21,7 +18,7 @@ public interface Node {
 	 * 
 	 * @author Aku Silvenius
 	 */
-	AbVertex getElement();
+	Vertex getElement();
 
 	/**
 	 * Palauttaa puun solmun parent-muuttujan.
@@ -29,7 +26,9 @@ public interface Node {
 	 * 
 	 * @author Aku Silvenius
 	 */
-	AbNode getParent();
+	Node getParent();
+	
+	int getRank();
 
 	/**
 	 * Asettaa puun solmulle element-muuttujaksi parametrina saadun verkon solmun.
@@ -37,7 +36,7 @@ public interface Node {
 	 * 
 	 * @author Aku Silvenius
 	 */
-	void setElement(AbVertex e);
+	void setElement(Vertex e);
 
 	/**
 	 * Asettaa puun solmun parent-muuttujaksi parametrina annetun puun solmun.
@@ -45,6 +44,8 @@ public interface Node {
 	 * 
 	 * @author Aku Silvenius
 	 */
-	void setParent(AbNode p);
+	void setParent(Node p);
+	
+	void setRank(int r);
 
 }

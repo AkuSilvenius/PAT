@@ -17,6 +17,6 @@ public interface Kruskal {
 	 *
 	 * @author Aku Silvenius
 	 */
-	LinkedList<Edge> MSTKruskal(Graph g) throws NullPointerException;
+	LinkedList<Edge> MSTKruskal() throws NullPointerException;
 
 }

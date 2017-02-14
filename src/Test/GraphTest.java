@@ -10,13 +10,10 @@ import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.LinkedList;
-import java.util.Map;
 import java.util.concurrent.ThreadLocalRandom;
-
 import javax.swing.*;
-import HS.*;
+import HS.AbGraph;
 import HS_in.*;
 
 /**
@@ -138,7 +135,7 @@ public class GraphTest extends JFrame {
 
 				try {
 					t.setText("Lasketaan...");
-					LinkedList<Edge> a = MST(g);
+					LinkedList<Edge> a = g.MSTKruskal();
 					viesti = tulosviesti(a);
 					t.setText("Kruskal laskettu");
 				} catch (NullPointerException n) {
@@ -208,6 +205,7 @@ public class GraphTest extends JFrame {
 					w.println(cities.get(r1) + "-" + d + "-" + cities.get(r2));
 				}
 
+				br.close();
 				w.close();
 
 				System.out.println("Luotiin " + rand + " satunnaista yhteytt‰");
@@ -235,16 +233,6 @@ public class GraphTest extends JFrame {
 			}
 			return tmp;
 		} //tulosviesti
-
-		/**
-		 * Kutsumetodi Kruskalin algoritmille
-		 * @param g - verkko josta Kruskal lasketaan
-		 * @return MST:n sis‰lt‰v‰ LinkedList
-		 * @author Aku Silvenius
-		 */
-		private LinkedList<Edge> MST(Graph g) {
-			return MSTKruskal(g);
-		}
 
 		/**
 		 * Tarkistaa ja ehtojen t‰yttyess‰ lis‰‰ verkkoon

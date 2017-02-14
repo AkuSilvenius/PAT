@@ -6,7 +6,7 @@ import HS_in.Vertex;
 import HS_in.Edge;
 import HS_in.Graph;
 
-public class AbGraph extends Object implements Iterable<Vertex>, HS_in.Graph {
+public class AbGraph extends AbKruskal implements Iterable<Vertex>, HS_in.Graph {
 
 	LinkedList<Vertex> vlist;
 	LinkedList<Edge> elist;

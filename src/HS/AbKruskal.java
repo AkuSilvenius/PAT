@@ -5,25 +5,25 @@ import java.util.LinkedList;
 import java.util.PriorityQueue;
 import HS_in.*;
 
-public abstract class AbKruskal implements HS_in.Kruskal {
+public abstract class AbKruskal implements HS_in.Graph {
 
-	public LinkedList<Edge> MSTKruskal(Graph g) throws NullPointerException {
+	public LinkedList<Edge> MSTKruskal() throws NullPointerException {
 
 		HashMap<Vertex,Node> map = new HashMap<Vertex,Node>(); // findSet()-operaation avuksi while-loopin sisällä
 		LinkedList<Edge> mst = new LinkedList<Edge>();
 		PriorityQueue<Edge> Q = new PriorityQueue<Edge>();
 
-		if (g.getVertices().size() == 0 || g.getEdges().size() == 0) return mst;
+		if (this.getVertices().size() == 0 || this.getEdges().size() == 0) return mst;
 
-		for (Edge e : g.Edges()){
+		for (Edge e : this.Edges()){
 			Q.add(e);
 		};
 
-		MFSet M = new AbMFSet(g);
+		MFSet M = new AbMFSet(this);
 		for (AbTree t : M.getForest()) map.put(t.root.getElement(), t.root);
 
 		try {
-			int i = g.size();
+			int i = this.size();
 
 			while(i > 1) {
 				Edge e = Q.poll();

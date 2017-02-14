@@ -102,4 +102,5 @@ public interface Graph {
 	 */
 	Iterator<Vertex> iterator();
 	
+	LinkedList<Edge> MSTKruskal() throws NullPointerException;
 }

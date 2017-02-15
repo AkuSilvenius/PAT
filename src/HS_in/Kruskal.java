@@ -9,10 +9,10 @@ import java.util.LinkedList;
 public interface Kruskal {
 
 	/**
-	 * Etsii ja palauttaa minimaalisen virittï¿½vï¿½n puun (Minimum Spanning Tree, MST),
-	 * ts. kaarien listan, joka yhdistï¿½ï¿½ kaikki verkon g
-	 * solmut pienimmillï¿½ mahdollisilla kaarilla.
-	 * @param g - verkko, jolle MST halutaan lï¿½ytï¿½ï¿½
+	 * Etsii ja palauttaa minimaalisen virittävän puun (Minimum Spanning Tree, MST),
+	 * ts. kaarien listan, joka yhdistää kaikki verkon g
+	 * solmut pienimmillä mahdollisilla kaarilla.
+	 * @param g - verkko, jolle MST halutaan löytää
 	 * @return lista kaarista, joista MST koostuu
 	 *
 	 * @author Aku Silvenius

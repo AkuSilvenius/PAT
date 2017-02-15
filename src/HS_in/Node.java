@@ -7,7 +7,7 @@ package HS_in;
 
 /**
 * Rajapinta pistevieraiden joukkojen puutoteutuksen solmujen operaatioihin.
-* HUOM. Node-luokka on HSTree-luokan sisäluokka: HSTree-luokalla on vain konstruktori -> ei rajapintaa.
+* HUOM. AbNode on AbTree-luokan sisäluokka: AbTree-luokalla on vain konstruktori -> ei rajapintaa.
 * @author Aku Silvenius
 */
 public interface Node {
@@ -28,6 +28,12 @@ public interface Node {
 	 */
 	Node getParent();
 	
+	/**
+	 * Palauttaa puun solmun rank-muuttujan.
+	 * @return rank
+	 * 
+	 * @author Aku Silvenius
+	 */
 	int getRank();
 
 	/**
@@ -46,6 +52,12 @@ public interface Node {
 	 */
 	void setParent(Node p);
 	
+	/**
+	 * Asettaa uuden arvon puun solmun rank-muuttujalle.
+	 * @param r - uusi rank-arvo
+	 * 
+	 * @author Aku Silvenius
+	 */
 	void setRank(int r);
 
 }

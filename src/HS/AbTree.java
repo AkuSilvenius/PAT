@@ -1,6 +1,7 @@
 package HS;
 
-import HS_in.*;
+import HS_in.Node;
+import HS_in.Vertex;
 
 public class AbTree {
 

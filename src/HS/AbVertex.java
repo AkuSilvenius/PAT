@@ -1,11 +1,12 @@
 package HS;
 
-import java.util.*;
+import java.util.Iterator;
+import java.util.LinkedList;
 import HS_in.Vertex;
 import HS_in.Edge;
 import HS_in.Graph;
 
-public class AbVertex extends Object implements Comparable<Object>, Iterable<Edge>, Vertex {
+public class AbVertex implements Comparable<Object>, Iterable<Edge>, Vertex {
 
 	public LinkedList<Edge> edges;
 	String label;

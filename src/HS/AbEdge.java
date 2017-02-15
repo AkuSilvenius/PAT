@@ -3,7 +3,7 @@ package HS;
 import HS_in.Edge;
 import HS_in.Vertex;
 
-public class AbEdge extends Object implements Comparable<Edge>, Edge {
+public class AbEdge implements Comparable<Edge>, Edge {
 
 	Vertex startPoint;
 	Vertex endPoint;
@@ -38,7 +38,7 @@ public class AbEdge extends Object implements Comparable<Edge>, Edge {
 		this.color = clr;
 	}
 
-	public AbEdge(Vertex endpoint, String lel) {
+	public AbEdge(Vertex endpoint, String label) {
 		this.startPoint = null;
 		this.endPoint = endpoint;
 		this.weight = Float.NaN;
@@ -52,14 +52,14 @@ public class AbEdge extends Object implements Comparable<Edge>, Edge {
 		this.color = clr;
 	}
 
-	public AbEdge(Vertex endpoint, String lel, int clr) {
+	public AbEdge(Vertex endpoint, String label, int clr) {
 		this.startPoint = null;
 		this.endPoint = endpoint;
 		this.weight = Float.NaN;
 		this.color = clr;
 	}
 
-	public AbEdge(Vertex endpoint, String lel, int clr, float w) {
+	public AbEdge(Vertex endpoint, String label, int clr, float w) {
 		this.startPoint = null;
 		this.endPoint = endpoint;
 		this.weight = w;

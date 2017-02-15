@@ -48,7 +48,7 @@ public class AbGraph extends AbKruskal implements Iterable<Vertex>, HS_in.Graph 
 		return this.vlist;
 	}
 	
-	public Iterable<Edge> Edges() {
+	public Iterable<Edge> edges() {
 		return this.elist;
 	}
 	

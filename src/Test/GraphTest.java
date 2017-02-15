@@ -111,7 +111,13 @@ public class GraphTest extends JFrame {
 		 */
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			if (e.getSource() == luetied) readFile(getFile());
+			if (e.getSource() == luetied)
+				try {
+					readFile(getFile());
+				} catch (IOException i) {
+					System.out.println("Tiedostonluku keskeytetty.");
+				}
+			
 			if (e.getSource() == tulostus) tulosta(g);
 
 			if (e.getSource() == tyh) {
@@ -119,6 +125,7 @@ public class GraphTest extends JFrame {
 				k2.setText("");
 				matka.setText("");
 			}
+			
 			if (e.getSource() == lisaa) {
 				try {
 					int dist = Integer.parseInt(matka.getText());
@@ -156,7 +163,7 @@ public class GraphTest extends JFrame {
 		 * @return Valitun tiedoston polku tai tyhjä merkkijono
 		 * @author Aku Silvenius
 		 */
-		private String getFile() {
+		private String getFile() throws IOException {
 			final JFileChooser fc = new JFileChooser();
 			int ret = fc.showOpenDialog(alapan);
 			if (ret == 1) {
@@ -339,7 +346,7 @@ public class GraphTest extends JFrame {
 				}
 
 			} catch (IOException e) {
-				e.printStackTrace();
+				System.out.println("Tiedostonluku keskeytetty.");
 			}
 
 		} //readFile

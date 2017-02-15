@@ -15,7 +15,7 @@ public abstract class AbKruskal implements HS_in.Graph {
 
 		if (this.getVertices().size() == 0 || this.getEdges().size() == 0) return mst;
 
-		for (Edge e : this.Edges()){
+		for (Edge e : this.edges()){
 			Q.add(e);
 		};
 

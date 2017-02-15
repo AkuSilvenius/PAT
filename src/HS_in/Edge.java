@@ -3,7 +3,7 @@ package HS_in;
 //attribuutit:
 //Vertex startPoint;
 //Vertex endPoint;
-//String lel;
+//String label;
 //float weight;
 //int color;
 
@@ -28,6 +28,14 @@ public interface Edge {
 	 * @author Teemu Holttinen
 	 */
 	void setColor(int clr);
+	
+	/**
+	 * Kaaren lähtösolmun määrittäminen
+	 * @param v - lähtösolmu
+	 *
+	 * @author Teemu Holttinen
+	 */
+	void setStartPoint(Vertex v);
 
 	/**
 	 * Palauttaa totuusarvon onko solmu v kaaren lähtösolmu
@@ -71,8 +79,6 @@ public interface Edge {
 	 */
 	Vertex getStartPoint();
 	
-	void setStartPoint(Vertex v);
-
 	/**
 	 * compareTo -metodi kaarten vertaamiseen
 	 * @param e - vertailun kohteena oleva kaari

@@ -33,7 +33,7 @@ public interface Graph {
 	
 	/**
 	 * Lis‰‰ verkkoon uuden solmun tarkennetuilla parametreilla.
-	 * @param lel - uuden solmun nimi
+	 * @param label - uuden solmun nimi
 	 * @return uusi solmu
 	 * 
 	 * @author Aku Silvenius
@@ -43,7 +43,7 @@ public interface Graph {
 	/**
 	 * Lis‰‰ verkkoon uuden solmun tarkennetuilla parametreilla.
 	 * @param clr - uuden solmun v‰ri
-	 * @param lel - uuden solmun nimi
+	 * @param label - uuden solmun nimi
 	 * @return uusi solmu
 	 * 
 	 * @author Aku Silvenius
@@ -58,25 +58,39 @@ public interface Graph {
 	 */
 	int size();
 	
+	/**
+	 * Palauttaa verkon attribuutin elist
+	 * eli kaikki verkon kaaret
+	 * @return verkon kaaret
+	 * 
+	 * @author Teemu Holttinen
+	 */
 	LinkedList<Edge> getEdges();
 	
+	/**
+	 * Palauttaa verkon attribuutin vlist
+	 * eli kaikki verkon solmut
+	 * @return verkon solmut
+	 * 
+	 * @author Teemu Holttinen
+	 */
 	LinkedList<Vertex> getVertices();
 	
 	/**
-	 * Palauttaa Iterle-toteutuksen verkon solmuista.
-	 * @return Iterle-toteutus verkon solmuista
+	 * Palauttaa Iterable-toteutuksen verkon solmuista.
+	 * @return Iterable-toteutus verkon solmuista
 	 * 
 	 * @author Aku Silvenius
 	 */
 	Iterable<Vertex> vertices();
 	
 	/**
-	 * Palauttaa Iterle-toteutuksen verkon kaarista.
-	 * @return Iterle-toteutus verkon kaarista
+	 * Palauttaa Iterable-toteutuksen verkon kaarista.
+	 * @return Iterable-toteutus verkon kaarista
 	 * 
 	 * @author Aku Silvenius
 	 */
-	Iterable<Edge> Edges();
+	Iterable<Edge> edges();
 	
 	/**
 	 * Palauttaa verkon ensimm‰isen solmun.
@@ -102,5 +116,13 @@ public interface Graph {
 	 */
 	Iterator<Vertex> iterator();
 	
+	/**
+	 * Etsii ja palauttaa minimaalisen viritt‰v‰n puun (Minimum Spanning Tree, MST),
+	 * ts. kaarien listan, joka yhdist‰‰ kaikki verkon g
+	 * solmut pienimmill‰ mahdollisilla kaarilla. 
+	 * @return lista kaarista, joista MST koostuu
+	 *
+	 * @author Aku Silvenius
+	 */
 	LinkedList<Edge> MSTKruskal() throws NullPointerException;
 }

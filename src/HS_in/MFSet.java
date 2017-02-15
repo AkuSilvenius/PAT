@@ -4,7 +4,7 @@ import java.util.LinkedList;
 import HS.AbTree;
 
 //attribuutit:
-//LinkedList<Tree> forest;
+//LinkedList<AbTree> forest;
 
 /**
 * Rajapinta pistevieraiden joukkojen operaatioihin.
@@ -25,7 +25,7 @@ public interface MFSet {
 	 * Etsii ja palauttaa joukon (puun) juurisolmun. Samalla
 	 * rekursiivinen parent-linkin päivitys juurisolmuun.
 	 * @param n - puun solmu, jonka juuri halutaan löytää
-	 * @return arametrina saadun solmun puun juurisolmun
+	 * @return parametrina saadun solmun puun juurisolmu
 	 * 
 	 * @author Aku Silvenius
 	 */
@@ -52,6 +52,12 @@ public interface MFSet {
 	 */
 	void link(Node x, Node y);
 	
+	/**
+	 * Palauttaa tämän joukon forest-attribuutin
+	 * @return forest
+	 * 
+	 * @author Aku Silvenius
+	 */
 	LinkedList<AbTree> getForest();
 
 }

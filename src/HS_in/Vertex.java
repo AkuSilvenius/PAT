@@ -4,11 +4,9 @@ import java.util.Iterator;
 import java.util.LinkedList;
 
 //attribuutit:
-//LinkedList<Edge> Edges;
+//LinkedList<Edge> edges;
 //String label;
 //int color;
-//int index;
-//float weight;
 
 /**
 * Rajapinta solmujen k‰sittelyyn
@@ -25,22 +23,30 @@ public interface Vertex {
 	int getColor();
 
 	/**
-	 * Palauttaa m‰‰ritellyn solmun kaaren
-	 * @param v - Solmu
-	 * @return Kaari
+	 * Palauttaa kaaren t‰m‰n ja m‰‰ritellyn
+	 * p‰‰tesolmun v‰lill‰
+	 * @param v - haettavan kaaren p‰‰tesolmu
+	 * @return kaari
 	 * 
 	 * @author Teemu Holttinen
 	 */
 	Edge getEdge(Vertex v);
 
 	/**
-	 * Palauttaa solmun label-tiedon
-	 * @return label-tieto
+	 * Palauttaa solmun label-attribuutin
+	 * @return label
 	 * 
 	 * @author Teemu Holttinen
 	 */
 	String getLabel();
 	
+	/**
+	 * Palauttaa Vertex-luokan attribuutin edges
+	 * eli kaikki solmusta l‰htev‰t kaaret
+	 * @return solmun kaaret
+	 * 
+	 * @author Teemu Holttinen
+	 */
 	LinkedList<Edge> getEdges();
 
 	/**
@@ -51,7 +57,12 @@ public interface Vertex {
 	 */
 	void setColor(int clr);
 
-	
+	/**
+	 * Asettaa solmulle nimen
+	 * @param label - nimi
+	 * 
+	 * @author Teemu Holttinen
+	 */
 	void setLabel(String label);
 
 	/**

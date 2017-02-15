@@ -3,7 +3,6 @@ package HS_in;
 //attribuutit:
 //Vertex startPoint;
 //Vertex endPoint;
-//String label;
 //float weight;
 //int color;
 

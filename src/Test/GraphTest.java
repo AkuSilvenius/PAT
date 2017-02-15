@@ -117,7 +117,7 @@ public class GraphTest extends JFrame {
 				} catch (IOException i) {
 					System.out.println("Tiedostonluku keskeytetty.");
 				}
-			
+
 			if (e.getSource() == tulostus) tulosta(g);
 
 			if (e.getSource() == tyh) {
@@ -125,7 +125,7 @@ public class GraphTest extends JFrame {
 				k2.setText("");
 				matka.setText("");
 			}
-			
+
 			if (e.getSource() == lisaa) {
 				try {
 					int dist = Integer.parseInt(matka.getText());
